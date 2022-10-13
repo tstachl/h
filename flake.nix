@@ -18,10 +18,6 @@
     in
     rec {
 
-      packages = forAllSystems (system:
-        import ./pkgs { pkgs = pkgsFor.${system}; }
-      );
-
       devShells = forAllSystems (system: {
         default = import ./shell.nix { pkgs = pkgsFor.${system}; };
       });
