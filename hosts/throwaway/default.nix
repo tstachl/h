@@ -4,6 +4,8 @@
     ./hardware-configuration.nix
 
     ../common/global
+
+    ../common/optional/gnome.nix
   ];
 
   # use the systemd-boot EFI boot loader
