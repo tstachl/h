@@ -25,7 +25,7 @@
       [ gnome-settings-daemon ];
     
     # gnome crypto services and tools package
-    dbus.packages = [ pkgs.gnome.dconf pkgs.gcr ];
+    dbus.packages = [ pkgs.dconf pkgs.gcr ];
     
     avahi.enable = false;
   };
