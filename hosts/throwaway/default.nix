@@ -22,10 +22,6 @@
   # internationalization properties
   i18n.defaultLocale = "en_US.UTF-8";
 
-  # enable sound
-  sound.enable = true;
-  hardware.pulseaudio.enable = true;
-
   # user account
   users.users.thomas = {
     isNormalUser = true;
