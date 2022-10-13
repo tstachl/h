@@ -6,6 +6,7 @@
     ./locale.nix
     ./nix.nix
     ./podman.nix
+    ./tailscale.nix
   ];
 
   environment = {
