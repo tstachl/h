@@ -4,6 +4,7 @@
     ./gpg.nix
     ./locale.nix
     ./nix.nix
+    ./openssh.nix
     ./podman.nix
     ./tailscale.nix
   ];
