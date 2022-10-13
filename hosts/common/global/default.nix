@@ -1,6 +1,8 @@
 { lib, inputs, ... }:
 {
-  imports = [ ];
+  imports = [
+    ./fish.nix
+  ];
 
   environment = {
     loginShellInit = ''
