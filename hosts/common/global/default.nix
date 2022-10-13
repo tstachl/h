@@ -2,6 +2,7 @@
 {
   imports = [
     ./fish.nix
+    ./gpg.nix
   ];
 
   environment = {
