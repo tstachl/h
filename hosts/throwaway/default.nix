@@ -6,6 +6,7 @@
     ../common/global
 
     ../common/optional/gnome.nix
+    ../common/optional/pipewire.nix
   ];
 
   # use the systemd-boot EFI boot loader
