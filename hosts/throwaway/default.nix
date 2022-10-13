@@ -4,6 +4,7 @@
     ./hardware-configuration.nix
 
     ../common/global
+    ../common/users/thomas.nix
 
     ../common/optional/gnome.nix
     ../common/optional/pipewire.nix
@@ -19,13 +20,6 @@
   time.timeZone = "America/Los_Angeles";
 
   # user account
-  users.users.thomas = {
-    isNormalUser = true;
-    extraGroups = [ "wheel" ];
-    packages = with pkgs; [
-      firefox
-    ];
-  };
 
   # system packages
   environment.systemPackages = with pkgs; [
