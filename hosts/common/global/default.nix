@@ -3,6 +3,8 @@
   imports = [
     ./fish.nix
     ./gpg.nix
+    ./locale.nix
+    ./nix.nix
   ];
 
   environment = {
