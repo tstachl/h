@@ -6,6 +6,7 @@
     ../common/global
     ../common/users/thomas.nix
 
+    ../common/optional/nixos.nix
     ../common/optional/gnome.nix
     ../common/optional/pipewire.nix
     ../common/optional/systemd-boot.nix

@@ -17,19 +17,18 @@
       );
     in
     rec {
+      nixosModules = import ./modules/nixos;
 
       devShells = forAllSystems (system: {
         default = import ./shell.nix { pkgs = pkgsFor.${system}; };
       });
 
       nixosConfigurations = {
-        # vm to learn
         throwaway = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
           specialArgs = { inherit inputs; inherit (self) outputs; };
           modules = [ ./hosts/throwaway ];
         };
       };
-
     };
 }
