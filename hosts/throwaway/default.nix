@@ -30,9 +30,7 @@
 
   # system packages
   environment.systemPackages = with pkgs; [
-    neovim
     git
-    gnupg
   ];
 
   system.stateVersion = "22.05";
