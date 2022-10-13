@@ -10,11 +10,21 @@
   import nixpkgs { overlays = [ ]; }
 , ...
 }: pkgs.mkShell {
-  NIX_CONFIG = "experimental-features = nix-command flakes";
+  NIX_CONFIG = "experimental-features = nix-command flakes repl-flake";
+
+  sopsPGPKeyDirs = [ 
+    "${toString ./.}/keys/hosts"
+    "${toString ./.}/keys/users"
+  ];
+  sopsCreateGPGHome = true;
+
   nativeBuildInputs = with pkgs; [
     nix
     home-manager
     git
+
+    sops
     gnupg
+    age
   ];
 }

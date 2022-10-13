@@ -1,0 +1,14 @@
+keys:
+  - &users:
+    - &thomas 7A53D4C6B481F7711588D34FDE749C31D060A160
+  - &hosts:
+    - &throwaway age1l9wl0q0x7c02hc0w22nne7433qlc5phzavuuuk8du5tfcrdmky6sftr3uw
+
+creation_rules:
+  - path_regex: hosts/common/secrets.ya?ml$
+    key_groups:
+    - age:
+      - *throwaway
+      pgp:
+      - *thomas
+

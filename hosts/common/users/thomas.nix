@@ -31,8 +31,13 @@ in
 
     # Password File
     # TODO: would be nice but doesn't work with Salesforce machine.
-    # passwordFile = config.sops.secrets.thomas-password.path;
-    hashedPassword = "$5$9cvVp5fWIkb/mXhs$y0yfnlqedfUkxBGxrk8Kc6ppuLDo2UU9ozErYLPDlo/";
+    passwordFile = config.sops.secrets.thomas.path;
+    # hashedPassword = "$5$9cvVp5fWIkb/mXhs$y0yfnlqedfUkxBGxrk8Kc6ppuLDo2UU9ozErYLPDlo/";
+  };
+
+  sops.secrets.thomas = {
+    sopsFile = ../secrets.yaml;
+    neededForUsers = true;
   };
 
   # services.geoclue2.enable = true;
