@@ -19,12 +19,5 @@
   # set timezone
   time.timeZone = "America/Los_Angeles";
 
-  # user account
-
-  # system packages
-  environment.systemPackages = with pkgs; [
-    git
-  ];
-
   system.stateVersion = "22.05";
 }
