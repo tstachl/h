@@ -8,6 +8,8 @@
     ../common/optional/gnome.nix
     ../common/optional/pipewire.nix
     ../common/optional/systemd-boot.nix
+    ../common/optional/x11-no-suspend.nix
+    ../common/optional/yubikey.nix
   ];
 
   # set hostname
@@ -15,9 +17,6 @@
 
   # set timezone
   time.timeZone = "America/Los_Angeles";
-
-  # internationalization properties
-  i18n.defaultLocale = "en_US.UTF-8";
 
   # user account
   users.users.thomas = {
