@@ -2,6 +2,8 @@
 {
   imports = [
     ./hardware-configuration.nix
+
+    ../common/global
   ];
 
   # use the systemd-boot EFI boot loader
