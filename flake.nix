@@ -18,6 +18,7 @@
     in
     rec {
       nixosModules = import ./modules/nixos;
+      homeManagerModules = import ./modules/home-manager;
 
       devShells = forAllSystems (system: {
         default = import ./shell.nix { pkgs = pkgsFor.${system}; };
@@ -30,5 +31,14 @@
           modules = [ ./hosts/throwaway ];
         };
       };
+
+      homeConfigurations = {
+        "thomas@throwaway" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor."aarch64-linux";
+          extraSpecialArgs = { inherit inputs; inherit (self) outputs; };
+          modules = [ ./home/thomas/throwaway.nix ];
+        };
+      };
+
     };
 }
