@@ -32,6 +32,7 @@ in
     # Password File
     # TODO: would be nice but doesn't work with Salesforce machine.
     # passwordFile = config.sops.secrets.thomas-password.path;
+    hashedPassword = "$5$9cvVp5fWIkb/mXhs$y0yfnlqedfUkxBGxrk8Kc6ppuLDo2UU9ozErYLPDlo/";
   };
 
   # services.geoclue2.enable = true;
