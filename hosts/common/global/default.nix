@@ -5,6 +5,7 @@
     ./gpg.nix
     ./locale.nix
     ./nix.nix
+    ./podman.nix
   ];
 
   environment = {
