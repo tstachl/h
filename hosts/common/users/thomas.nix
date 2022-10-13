@@ -1,7 +1,7 @@
 { pkgs, config, lib, outputs, ... }:
 let
   ifExists = groups: builtins.filter (
-    group: builtins.hasAttr group.config.users.groups
+    group: builtins.hasAttr group config.users.groups
   ) groups;
 in
 {
