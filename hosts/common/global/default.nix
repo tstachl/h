@@ -1,6 +1,7 @@
 { lib, inputs, ... }:
 {
   imports = [
+    ./decrypt.nix
     ./gpg.nix
     ./locale.nix
     ./nix.nix

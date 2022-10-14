@@ -17,7 +17,14 @@
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
-      forAllSystems = nixpkgs.lib.genAttrs [ "x86_64-linux" "aarch64-linux" ];
+      forAllSystems = nixpkgs.lib.genAttrs [
+        "aarch64-linux"
+        "aarch64-darwin"
+        "i686-linux"
+        "x86_64-darwin"
+        "x86_64-linux"
+      ];
+
       pkgsFor = forAllSystems (system:
         import nixpkgs {
           inherit system;

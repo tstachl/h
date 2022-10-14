@@ -12,12 +12,6 @@
 }: pkgs.mkShell {
   NIX_CONFIG = "experimental-features = nix-command flakes repl-flake";
 
-  sopsPGPKeyDirs = [ 
-    "${toString ./.}/keys/hosts"
-    "${toString ./.}/keys/users"
-  ];
-  sopsCreateGPGHome = true;
-
   nativeBuildInputs = with pkgs; [
     nix
     home-manager
