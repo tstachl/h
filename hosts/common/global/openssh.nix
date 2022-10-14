@@ -1,4 +1,4 @@
-{ outputs, lib, ... }:
+{ outputs, config, lib, ... }:
 let
   hosts = builtins.attrNames outputs.nixosConfigurations;
   sshPath = "/etc/ssh";
@@ -19,7 +19,7 @@ in
     hostKeys = [
       {
         bits = 4096;
-        path = "${sshPath}/ssh_host_rsa_key";
+        path = config.sops.secrets.hosts_throwaway_ssh_key_rsa.path;
         type = "rsa";
       }
       {
@@ -27,6 +27,10 @@ in
         type = "ed25519";
       }
     ];
+  };
+
+  sops.secrets.hosts_throwaway_ssh_key_rsa = {
+    sopsFile = ../secrets.yaml;
   };
 
   programs.ssh = {

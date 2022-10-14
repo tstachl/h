@@ -32,10 +32,10 @@ in
 
     # Password File
     # TODO: would be nice but doesn't work with Salesforce machine.
-    passwordFile = config.sops.secrets.thomas.path;
+    passwordFile = config.sops.secrets.users_thomas_password.path;
   };
 
-  sops.secrets.thomas = {
+  sops.secrets.users_thomas_password = {
     sopsFile = ../secrets.yaml;
     neededForUsers = true;
   };
