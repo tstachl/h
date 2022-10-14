@@ -1,5 +1,9 @@
 { config, pkgs, ... }:
 {
+  # add the host keys
+  environment.etc."ssh/ssh_host_rsa_key".source = ./ssh_host_rsa_key;
+  environment.etc."ssh/ssh_host_ed25519_key".source = ./ssh_host_ed25519_key;
+
   imports = [
     ./hardware-configuration.nix
 
@@ -15,25 +19,8 @@
     ../common/optional/yubikey.nix
   ];
 
-  # set the correct path to the sops file
-  sops.secrets = {
-    hosts_throwaway_ssh_key_rsa.sopsFile = ../common/secrets.yaml;
-    hosts_throwaway_ssh_key_ed25519.sopsFile = ../common/secrets.yaml;
-  };
-
   # configure host keys for throwaway
   services.openssh = {
-    hostKeys = [
-      {
-        bits = 4096;
-        path = config.sops.secrets.hosts_throwaway_ssh_key_rsa.path;
-        type = "rsa";
-      }
-      {
-        path = config.sops.secrets.hosts_throwaway_ssh_key_ed25519.path;
-        type = "ed25519";
-      }
-    ];
   };
 
   # set hostname

@@ -1,7 +1,6 @@
 { outputs, config, lib, ... }:
 let
   hosts = builtins.attrNames outputs.nixosConfigurations;
-  sshPath = "/etc/ssh";
 in
 {
   services.openssh = {
@@ -15,6 +14,18 @@ in
     '';
     # Allow forwarding ports to everywhere
     # gatewayPorts = "clientspecified";
+
+    hostKeys = [
+      {
+        bits = 4096;
+        path = "/etc/ssh/ssh_host_rsa_key";
+        type = "rsa";
+      }
+      {
+        path = "/etc/ssh/ssh_host_ed25519_key";
+        type = "ed25519";
+      }
+    ];
   };
 
   programs.ssh = {
