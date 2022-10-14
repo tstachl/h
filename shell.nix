@@ -12,6 +12,7 @@
 }: pkgs.mkShell {
   NIX_CONFIG = "experimental-features = nix-command flakes repl-flake";
 
+  sopsCreateGPGHome = true;
   shellHook = ''
     gpg --receive-keys DE749C31D060A160
     echo "$( \

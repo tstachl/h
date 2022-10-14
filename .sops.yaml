@@ -2,7 +2,7 @@ keys:
   - &users:
     - &thomas 7A53D4C6B481F7711588D34FDE749C31D060A160
   - &hosts:
-    - &throwaway age1l9wl0q0x7c02hc0w22nne7433qlc5phzavuuuk8du5tfcrdmky6sftr3uw
+    - &throwaway age160n4r08zhxqzy4a02p2tu3pxrcks2y5g20qw2c6x44svfmddk5ms092wlt
 
 creation_rules:
   - path_regex: hosts/common/secrets.ya?ml$
