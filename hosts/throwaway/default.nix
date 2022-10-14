@@ -16,7 +16,10 @@
   ];
 
   # set the correct path to the sops file
-  sops.defaultSopsFile = ../common/secrets.yaml;
+  sops.secrets = {
+    hosts_throwaway_ssh_key_rsa.sopsFile = ../common/secrets.yaml;
+    hosts_throwaway_ssh_key_ed25519.sopsFile = ../common/secrets.yaml;
+  };
 
   # configure host keys for throwaway
   services.openssh = {
