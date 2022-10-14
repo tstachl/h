@@ -15,6 +15,24 @@
     ../common/optional/yubikey.nix
   ];
 
+  # set the correct path to the sops file
+  sops.defaultSopsFile = ../common/secrets.yaml;
+
+  # configure host keys for throwaway
+  services.openssh = {
+    hostKeys = [
+      {
+        bits = 4096;
+        path = config.sops.secrets.hosts_throwaway_ssh_key_rsa.path;
+        type = "rsa";
+      }
+      {
+        path = config.sops.secrets.hosts_throwaway_ssh_key_ed25519.path;
+        type = "ed25519";
+      }
+    ];
+  };
+
   # set hostname
   networking.hostName = "throwaway";
 

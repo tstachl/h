@@ -15,22 +15,6 @@ in
     '';
     # Allow forwarding ports to everywhere
     # gatewayPorts = "clientspecified";
-
-    hostKeys = [
-      {
-        bits = 4096;
-        path = config.sops.secrets.hosts_throwaway_ssh_key_rsa.path;
-        type = "rsa";
-      }
-      {
-        path = "${sshPath}/ssh_host_ed25519_key";
-        type = "ed25519";
-      }
-    ];
-  };
-
-  sops.secrets.hosts_throwaway_ssh_key_rsa = {
-    sopsFile = ../secrets.yaml;
   };
 
   programs.ssh = {
