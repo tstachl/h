@@ -6,6 +6,7 @@ let
 in
 {
   # TODO: currently only using fish with thomas user
+  # maybe I should just move fish into the home-manager config
   programs.fish = {
     enable = true;
     vendor = {
@@ -32,7 +33,6 @@ in
     # Password File
     # TODO: would be nice but doesn't work with Salesforce machine.
     passwordFile = config.sops.secrets.thomas.path;
-    # hashedPassword = "$5$9cvVp5fWIkb/mXhs$y0yfnlqedfUkxBGxrk8Kc6ppuLDo2UU9ozErYLPDlo/";
   };
 
   sops.secrets.thomas = {
