@@ -74,3 +74,15 @@ With that, the password file for my users has been decrypted on `throwaway` in
 the folder `/run/secrets-for-users/thomas`. However, for some reason, on reboot
 I was unable to log in. Before continuing to investigate, I wanted to jot down
 these steps while it was fresh on my mind.
+
+### Host Keys
+
+Since `sops-nix` uses the host keys to decrypt secrets, I'm going to have to
+backup and restore those host keys for every host I'm creating. It would be
+great if I could just say `nixos-install --flake github:tstachl/h#throwaway` and
+have it automagically restore the host keys. But its seems like it might be more
+difficult than that. Here are some options I'm investigating:
+
+1. Activation Scripts
+
+2. Manual backup & restore

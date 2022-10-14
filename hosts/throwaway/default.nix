@@ -1,9 +1,5 @@
 { config, pkgs, ... }:
 {
-  # add the host keys
-  environment.etc."ssh/ssh_host_rsa_key".source = ./ssh_host_rsa_key;
-  environment.etc."ssh/ssh_host_ed25519_key".source = ./ssh_host_ed25519_key;
-
   imports = [
     ./hardware-configuration.nix
 
