@@ -37,6 +37,9 @@
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
 
+      packages = forAllSystems (system:
+        import ./pkgs { pkgs = pkgsFor.${system}; }
+      );
       devShells = forAllSystems (system: {
         default = import ./shell.nix { pkgs = pkgsFor.${system}; };
       });
