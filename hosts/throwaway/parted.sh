@@ -1,4 +1,5 @@
 #!/run/current-system/sw/bin/sh
+set -e
 
 # Check that $1 exists
 if [ ! -b "$1" ]; then
