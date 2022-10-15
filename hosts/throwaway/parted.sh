@@ -14,15 +14,15 @@ sudo parted $1 -- mkpart ESP fat32 1mb 512mb
 sudo parted $1 -- set 2 esp on
 
 # Set up encryption
-sudo cryptsetup --verify-passphrase -v luksFormat "${1}1"
-sudo cryptsetup open "${1}1" enc
+sudo cryptsetup --verify-passphrase -v luksFormat --label=${2}_crypt "${1}1"
+sudo cryptsetup open "${1}1" $2
 
 # Formatting Partitions
-sudo mkfs.btrfs -fL nixos /dev/mapper/enc
+sudo mkfs.btrfs -fL $2 /dev/mapper/$2
 sudo mkfs.fat -F 32 -n boot "${1}2"
 
 # Mount and Setup BTRFS
-sudo mount -t btrfs /dev/mapper/enc /mnt
+sudo mount -t btrfs /dev/mapper/$2 /mnt
 
 # Create Subvolumes
 sudo btrfs subvolume create /mnt/root
