@@ -5,26 +5,27 @@
 ### NixOS
 
 ```sh
-# Become root
-sudo -i
+# Load the development shell from nix
+nix --experimental-features "nix-command flakes" develop github:tstachl/h
 
-# UEFI (GPT)
-parted /dev/vda -- mklabel gpt
-parted /dev/vda -- mkpart primary 512mb 100%
-parted /dev/vda -- mkpart ESP fat32 1mb 512mb
-parted /dev/vda -- set 2 esp on
+# Clone the repository
+git clone git@github.com:tstachl/h
 
-# Formatting
-mkfs.btrfs -fL throwaway /dev/vda1
-mkfs.fat -F 32 -n boot /dev/vda2
+# Run the partition script
+cd h && \
+  sudo hosts/throwaway/parted.sh /dev/vda throwaway
 
-# Mount partitions
-mount /dev/disk/by-label/throwaway /mnt
-mkdir -p /mnt/boot
-mount /dev/disk/by-label/boot /mnt/boot
+# Install the OS
+sudo nixos-install --flake .#throwaway
 
-# Install from flake
-nixos-install --flake github:tstachl/h#throwaway
+# Create and/or move host keys
+gpg --out hosts/throwaway/keys.tar.gz --decrypt hosts/throwaway/keys.tar.gz.gpg
+sudo tar -xvzf hosts/throwaway/keys.tar.gz /mnt/etc/ssh
+sudo cp hosts/throwaway/*.pub /mnt/etch/ssh
+rm hosts/throwaway/keys.tar.gz
+
+# Recreate and/or apply secrets
+sudo nixos-install --flake .#throwaway
 ```
 
 ### Home Manager
