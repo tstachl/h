@@ -9,10 +9,38 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
+  # TODO: need to find a way to label this.
+  boot.initrd.luks.devices."enc".device = "/dev/vda1"
+
   fileSystems = {
     "/" = {
-      device = "/dev/disk/by-label/throwaway";
+      device = "/dev/disk/by-label/nixos";
       fsType = "btrfs";
+      options = [ "subvol=root" "compress=zstd" "noatime" ];
+    };
+
+    "/home" = {
+      device = "/dev/disk/by-label/nixos";
+      fsType = "btrfs";
+      options = [ "subvol=home" "compress=zstd" "noatime" ];
+    };
+
+    "/nix" = {
+      device = "/dev/disk/by-label/nixos";
+      fsType = "btrfs";
+      options = [ "subvol=nix" "compress=zstd" "noatime" ];
+    };
+
+    "/persist" = {
+      device = "/dev/disk/by-label/nixos";
+      fsType = "btrfs";
+      options = [ "subvol=persist" "compress=zstd" "noatime" ];
+    };
+
+    "/swap" = {
+      device = "/dev/disk/by-label/nixos";
+      fsType = "btrfs";
+      options = [ "subvol=swap" "compress=zstd" "noatime" ];
     };
 
     "/boot" = {
@@ -21,7 +49,10 @@
     };
   };
 
-  swapDevices = [ ];
+  swapDevices = [{
+    device = "/swap/swapfile";
+    size = 4096;
+  }];
 
   networking.useDHCP = lib.mkDefault true;
 }
