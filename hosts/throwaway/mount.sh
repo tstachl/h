@@ -10,18 +10,18 @@ fi
 # Mount Everything
 sudo mount -o subvol=root,compress=zstd,noatime "$1" /mnt
 
-sudo mkdir /mnt/home
+[ ! -d "/mnt/home" ] && sudo mkdir /mnt/home
 sudo mount -o subvol=home,compress=zstd,noatime "$1" /mnt/home
 
-sudo mkdir /mnt/nix
+[ ! -d "/mnt/nix" ] && sudo mkdir /mnt/nix
 sudo mount -o subvol=nix,compress=zstd,noatime "$1" /mnt/nix
 
-sudo mkdir /mnt/persist
+[ ! -d "/mnt/persist" ] && sudo mkdir /mnt/persist
 sudo mount -o subvol=persist,compress=zstd,noatime "$1" /mnt/persist
 
-sudo mkdir /mnt/swap
+[ ! -d "/mnt/swap" ] && sudo mkdir /mnt/swap
 sudo mount -o subvol=swap,compress=noatime "$1" /mnt/swap
 
-sudo mkdir /mnt/boot
+[ ! -d "/mnt/boot" ] && sudo mkdir /mnt/boot
 sudo mount /dev/disk/by-label/boot /mnt/boot
 
