@@ -38,19 +38,19 @@ sudo btrfs subvolume snapshot -r /mnt/root /mnt/root-blank
 sudo umount /mnt
 
 # Mount Everything
-sudo mount -o subvol=root,compress=zstd,noatime /dev/mapper/enc /mnt
+sudo mount -o subvol=root,compress=zstd,noatime /dev/mapper/$2 /mnt
 
 sudo mkdir /mnt/home
-sudo mount -o subvol=home,compress=zstd,noatime /dev/mapper/enc /mnt/home
+sudo mount -o subvol=home,compress=zstd,noatime /dev/mapper/$2 /mnt/home
 
 sudo mkdir /mnt/nix
-sudo mount -o subvol=nix,compress=zstd,noatime /dev/mapper/enc /mnt/nix
+sudo mount -o subvol=nix,compress=zstd,noatime /dev/mapper/$2 /mnt/nix
 
 sudo mkdir /mnt/persist
-sudo mount -o subvol=persist,compress=zstd,noatime /dev/mapper/enc /mnt/persist
+sudo mount -o subvol=persist,compress=zstd,noatime /dev/mapper/$2 /mnt/persist
 
 sudo mkdir /mnt/swap
-sudo mount -o subvol=swap,compress=noatime /dev/mapper/enc /mnt/swap
+sudo mount -o subvol=swap,compress=noatime /dev/mapper/$2 /mnt/swap
 
 sudo mkdir /mnt/boot
 sudo mount /dev/disk/by-label/boot /mnt/boot
