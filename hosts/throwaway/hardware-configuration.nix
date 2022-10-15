@@ -30,7 +30,7 @@
       device = "/dev/disk/by-label/boot";
       fsType = "vfat";
     };
-  ];
+  };
 
   nixpkgs.hostPlatform.system = "aarch64-linux";
   networking.useDHCP = lib.mkDefault true;
