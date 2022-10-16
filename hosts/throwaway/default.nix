@@ -15,15 +15,7 @@
     ../common/optional/yubikey.nix
   ];
 
-  # configure host keys for throwaway
-  services.openssh = {
-  };
-
-  # set hostname
   networking.hostName = "throwaway";
-
-  # set timezone
   time.timeZone = "America/Los_Angeles";
-
   system.stateVersion = "22.05";
 }

@@ -3,8 +3,6 @@
   services = {
     xserver = {
       enable = true;
-
-      # configure keymap in X11
       layout = "us";
 
       desktopManager.gnome = {
@@ -20,18 +18,14 @@
     geoclue2.enable = true;
     gnome.games.enable = false;
 
-    # system tray icons
     udev.packages = with pkgs.gnome;
       [ gnome-settings-daemon ];
     
     # gnome crypto services and tools package
     dbus.packages = [ pkgs.dconf pkgs.gcr ];
     
-    avahi.enable = false;
+    avahi.enable = true;
   };
-
-  # Fix broken stuff
-  networking.networkmanager.enable = false;
 
   # Remove bloat from Gnome
   environment.gnome.excludePackages = (with pkgs; [
