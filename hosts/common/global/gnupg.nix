@@ -4,6 +4,4 @@
     gnupg
     pinentry
   ];
-
-  services.pcscd.enable = true;
 }
