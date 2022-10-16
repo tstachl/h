@@ -60,7 +60,7 @@ in
     "/swap" = {
       device = "/dev/disk/by-label/${hostname}";
       fsType = "btrfs";
-      options = [ "subvol=swap" "noatime" ];
+      options = [ "subvol=swap" "noatime" "nodatacow" ];
     };
   };
 
