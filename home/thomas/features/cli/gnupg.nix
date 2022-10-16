@@ -31,14 +31,14 @@
   };
 
   # TODO: Must use Linux for modules that require systemd
-  # services.gpg-agent = {
-  #   enable = true;
-  #   enableBashIntegration = true;
-  #   enableFishIntegration = true;
-  #   enableSshSupport = true;
-  #   pinentryFlavor = "curses";
-  #   sshKeys = [
-  #     "0C8022799396573FE31D595B2C4B60B871618D9C"
-  #   ];
-  # };
+  services.gpg-agent = mkIf isLinux {
+    enable = true;
+    enableBashIntegration = true;
+    enableFishIntegration = true;
+    enableSshSupport = true;
+    pinentryFlavor = "curses";
+    sshKeys = [
+      "0C8022799396573FE31D595B2C4B60B871618D9C"
+    ];
+  };
 }
