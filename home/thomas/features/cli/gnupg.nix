@@ -37,7 +37,6 @@ in
     };
   };
 
-  # TODO: Must use Linux for modules that require systemd
   services.gpg-agent = mkIf isLinux {
     enable = true;
     enableBashIntegration = true;
