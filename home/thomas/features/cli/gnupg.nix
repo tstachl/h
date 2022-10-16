@@ -32,7 +32,8 @@ in
     };
 
     scdaemonSettings = {
-      reader-port = "Yubico Yubi";
+      reader-port = "Yubico YubiKey FIDO+CCID";
+      disable-ccid = true;
     };
   };
 
