@@ -33,7 +33,7 @@ in
   boot.initrd = {
      systemd = lib.mkIf systemdPhase1 {
        emergencyAccess = true;
-       initrdBin = with pkgs; [ coreutils btrfs-props ];
+       initrdBin = with pkgs; [ coreutils btrfs-progs ];
 
        services.initrd-btrfs-root-wipe = {
          description = "Wipe ephemeral btrfs root";
