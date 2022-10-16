@@ -12,7 +12,7 @@
     ../common/optional/sops.nix
     ../common/optional/systemd-boot.nix
     ../common/optional/x11-no-suspend.nix
-    # ../common/optional/yubikey.nix
+    ../common/optional/yubikey.nix
   ];
 
   # configure host keys for throwaway
