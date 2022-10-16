@@ -9,10 +9,7 @@
     overlays = with outputs.overlays; [ ];
   };
 
-  programs = {
-    home-manager.enable = true;
-    git.enable = true;
-  };
+  programs.home-manager.enable = true;
 
   nix = {
     package = pkgs.nix;
