@@ -1,54 +1,34 @@
 { lib, config, pkgs, ... }:
 let
   hostname = config.networking.hostName;
-  systemdPhase1 = config.boot.initrd.systemd.enable;
-
-  wipeScript = ''
-    mkdir -p /mnt
-    mount -o subvol=/ /dev/disk/by-label/${hostname} /mnt
-
-    if [ -e "/mnt/root/dontwipe" ]; then
-      echo "not wiping root..."
-    else
-      echo "wiping subvolumes..."
-      btrfs subvolume list -o /mnt/root |
-        cut -f9 -d ' ' |
-        while read subvolume; do
-          echo "deleting /$subvolume subvolume..."
-          btrfs subvolume delete "/mnt/$subvolume"
-        done
-      echo "deleting /root subvolume ..."
-      btrfs subvolume delete /mnt/root
-
-      echo "restoring blank /root subvolume..."
-      btrfs subvolume snapshot /mnt/root-blank /mnt/root
-    fi
-
-    umount /mnt
-  '';
 in
 {
   boot.initrd.supportedFilesystems = [ "btrfs" ];
 
   boot.initrd = {
-     systemd = lib.mkIf systemdPhase1 {
-       emergencyAccess = true;
-       initrdBin = with pkgs; [ coreutils btrfs-progs ];
+    postDeviceCommands = lib.mkBefore ''
+      mkdir -p /mnt
+      mount -o subvol=/ /dev/disk/by-label/${hostname} /mnt
 
-       services.initrd-btrfs-root-wipe = {
-         description = "Wipe ephemeral btrfs root";
-         script = wipeScript;
-         serviceConfig.Type = "oneshot";
-         unitConfig.DefaultDependencies = "no";
+      if [ -e "/mnt/root/dontwipe" ]; then
+        echo "not wiping root..."
+      else
+        echo "wiping subvolumes..."
+        btrfs subvolume list -o /mnt/root |
+          cut -f9 -d ' ' |
+          while read subvolume; do
+            echo "deleting /$subvolume subvolume..."
+            btrfs subvolume delete "/mnt/$subvolume"
+          done
+        echo "deleting /root subvolume ..."
+        btrfs subvolume delete /mnt/root
 
-         requires = [ "initrd-root-device.target" ];
-         before = [ "sysroot.mount" ];
-         wantedBy = [ "initrd-root-fs.target" ];
-       };
-     };
+        echo "restoring blank /root subvolume..."
+        btrfs subvolume snapshot /mnt/root-blank /mnt/root
+      fi
 
-    postDeviceCommands = lib.mkBefore
-      (lib.optionalString (!systemdPhase1) wipeScript);
+      umount /mnt
+    '';
   };
 
   fileSystems = {
@@ -74,6 +54,7 @@ in
       device = "/dev/disk/by-label/${hostname}";
       fsType = "btrfs";
       options = [ "subvol=persist" "compress=zstd" "noatime" ];
+      neededForBoot = true;
     };
 
     "/swap" = {
