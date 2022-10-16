@@ -1,12 +1,19 @@
-{ config, ... }:
+{ config, lib, pkgs, ... }:
+
+with lib;
+
+let
+  inherit (pkgs.stdenv.hostPlatform) isLinux;
+  inherit (config.xdg) configHome;
+in
 {
   home.sessionVariables = {
-    GNUPGHOME = "${config.xdg.configHome}/gnupg";
+    GNUPGHOME = "${configHome}/gnupg";
   };
 
   programs.gpg = {
     enable = true;
-    homedir = "${config.xdg.configHome}/gnupg";
+    homedir = "${configHome}/gnupg";
 
     publicKeys = [{
       source = ./7A53D4C6B481F7711588D34FDE749C31D060A160.asc;
