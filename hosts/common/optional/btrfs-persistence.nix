@@ -1,7 +1,7 @@
 { lib, config, pkgs, ... }:
 let
   hostname = config.networking.hostName;
-  # systemdPhase1 = config.boot.initrd.systemd.enable;
+  systemdPhase1 = config.boot.initrd.systemd.enable;
 
   wipeScript = ''
     mkdir -p /mnt
@@ -31,23 +31,24 @@ in
   boot.initrd.supportedFilesystems = [ "btrfs" ];
 
   boot.initrd = {
-  #   systemd = lib.mkIf systemdPhase1 {
-  #     emergencyAccess = true;
-  #     initrdBin = with pkgs; [ coreutils btrfs-props ];
+     systemd = lib.mkIf systemdPhase1 {
+       emergencyAccess = true;
+       initrdBin = with pkgs; [ coreutils btrfs-props ];
 
-  #     services.initrd-btrfs-root-wipe = {
-  #       description = "Wipe ephemeral btrfs root";
-  #       script = wipeScript;
-  #       serviceConfig.Type = "oneshot";
-  #       unitConfig.DefaultDependencies = "no";
+       services.initrd-btrfs-root-wipe = {
+         description = "Wipe ephemeral btrfs root";
+         script = wipeScript;
+         serviceConfig.Type = "oneshot";
+         unitConfig.DefaultDependencies = "no";
 
-  #       requires = [ "initrd-root-device.target" ];
-  #       before = [ "sysroot.mount" ];
-  #       wantedBy = [ "initrd-root-fs.target" ];
-  #     };
-  #   };
+         requires = [ "initrd-root-device.target" ];
+         before = [ "sysroot.mount" ];
+         wantedBy = [ "initrd-root-fs.target" ];
+       };
+     };
 
-    postDeviceCommands = lib.mkBefore wipeScript;
+    postDeviceCommands = lib.mkBefore
+      (lib.optionalString (!systemdPhase1) wipeScript);
   };
 
   fileSystems = {
