@@ -5,4 +5,4 @@
   ];
 
   programs.hyprland.enable = true; 
-};
+}
