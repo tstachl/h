@@ -27,7 +27,7 @@
           family = "FiraCode Nerd Font";
           style = "Bold Italic";
         };
-        size = 14.0;
+        size = 11.0;
       };
 
       # Colors (Iceberg Dark)
