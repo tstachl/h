@@ -37,6 +37,8 @@ in
     };
   };
 
+  services.pcscd.enable = true;
+
   services.gpg-agent = mkIf isLinux {
     enable = true;
     enableBashIntegration = true;

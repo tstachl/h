@@ -2,6 +2,6 @@
 {
   environment.systemPackages = with pkgs; [
     gnupg
-    pinentry-curses
+    pinentry
   ];
 }

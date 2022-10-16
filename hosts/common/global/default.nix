@@ -1,7 +1,7 @@
 { lib, inputs, ... }:
 {
   imports = [
-    ./gpg.nix
+    ./gnupg.nix
     ./locale.nix
     ./nix.nix
     ./openssh.nix
