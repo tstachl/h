@@ -79,7 +79,7 @@
       };
 
       key_bindings = [
-        { key = "Space", mods = "Shift", mode = "~Search", action = "ToggleViMode" }
+       { key = "Space"; mods = "Shift"; mode = "~Search"; action = "ToggleViMode"; }
 
         # TODO: figure out why I set these
         # { key = "Up"; mods = "Alt"; chars = "\x1b[1;5A"; }
