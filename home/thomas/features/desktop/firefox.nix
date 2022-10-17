@@ -9,5 +9,18 @@
       ublock-origin
       videospeed
     ];
+
+    profiles.default = {
+      name = "Thomas";
+      isDefault = true;
+
+      settings = {
+        "browser.startup.homepage" = "https://search.nixos.org";
+        "browser.search.region" = "US";
+        "browser.search.isUS" = true;
+        "distribution.searchplugins.defaultLocale" = "en-US";
+        "general.useragent.locale" = "en-US";
+      };
+    };
   };
 }
