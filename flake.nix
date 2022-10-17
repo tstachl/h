@@ -13,11 +13,6 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    hyprland = {
-      url = "github:hyprwm/hyprland";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -29,12 +24,15 @@
         "x86_64-darwin"
         "x86_64-linux"
       ];
-
+      
       pkgsFor = forAllSystems (system:
         import nixpkgs {
           inherit system;
-          config.allowUnfree = true;
-          config.allowUnsupportedSystem = true;
+
+          config = {
+            allowUnfree = true;
+            allowUnsupportedSystem = true;
+          };
         }
       );
     in
