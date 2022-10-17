@@ -1,6 +1,7 @@
 { inputs, lib, pkgs, config, outputs, ... }:
 {
   imports = [
+    inputs.nur.hmModules.nur
     ./features/cli
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
