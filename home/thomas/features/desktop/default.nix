@@ -1,7 +1,8 @@
 {
   imports = [
     ./alacritty.nix
-    ./fonts.nix
     ./firefox.nix
+    ./fonts.nix
+    ./gnome.nix
   ];
 }

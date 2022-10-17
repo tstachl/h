@@ -27,10 +27,6 @@
     avahi.enable = true;
   };
 
-  environment.systemPackages = (with pkgs.gnomeExtensions; [
-    material-shell
-  ]);
-
   # Remove bloat from Gnome
   environment.gnome.excludePackages = (with pkgs; [
     gnome-photos
