@@ -44,6 +44,7 @@
       nightfox-nvim
       lualine-nvim
       bufferline-nvim
+      vim-bbye
       nvim-tree-lua
       gitsigns-nvim
       nvim-cmp
