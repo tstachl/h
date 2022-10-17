@@ -7,7 +7,7 @@
     ../common/users/thomas.nix
 
     ../common/optional/gnome.nix
-    ../common/optional/hyprland.nix
+    #../common/optional/hyprland.nix
     ../common/optional/nixos.nix
     ../common/optional/pipewire.nix
     ../common/optional/sops.nix
