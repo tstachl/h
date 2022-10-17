@@ -32,6 +32,10 @@
           config = {
             allowUnfree = true;
             allowUnsupportedSystem = true;
+
+            # TODO: remove this when material-shell-26 is available
+            # allow gnome extensions
+            firefox.enableGnomeExtensions = true;
           };
         }
       );
