@@ -8,6 +8,7 @@
   dconf.settings = {
     "org/gnome/desktop/peripherals/mouse" = {
       natural-scroll = true;
+      accel-profile = "flat";
     };
 
     "org/gnome/shell/extensions/materialshell/bindings" = {
