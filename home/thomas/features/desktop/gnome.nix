@@ -59,7 +59,7 @@
       use-half-vertical-layout = [""];
       use-grid-layout = [""];
       use-ratio-layout = [""];
-      use-float-layout = [""];
+      use-float-layout = ["<Super>F"];
       use-simple-layout = [""];
       use-simple-horizontal-layout = [""];
       use-simple-vertical-layout = [""];
