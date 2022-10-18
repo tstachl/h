@@ -1,4 +1,7 @@
 { inputs, config, pkgs, ... }:
+let
+  inherit (config.sops) secrets;
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -14,6 +17,10 @@
     ../common/optional/x11-no-suspend.nix
     ../common/optional/yubikey.nix
   ];
+
+  sops.defaultSopsFile = ./secrets.yml;
+  sops.secrets.thomas.neededForUsers = true;
+  users.users.thomas.passwordFile = secrets.thomas.path;
 
   networking.hostName = "throwaway";
   time.timeZone = "America/Los_Angeles";

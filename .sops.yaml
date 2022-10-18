@@ -5,10 +5,10 @@ keys:
     - &throwaway age160n4r08zhxqzy4a02p2tu3pxrcks2y5g20qw2c6x44svfmddk5ms092wlt
 
 creation_rules:
-  - path_regex: hosts/common/secrets.ya?ml$
+  - path_regex: hosts/throwaway/secrets.yml$
     key_groups:
     - age:
       - *throwaway
-      pgp:
+    - pgp:
       - *thomas
 
