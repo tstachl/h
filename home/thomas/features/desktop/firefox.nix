@@ -8,6 +8,7 @@
       # simplelogin
       ublock-origin
       videospeed
+      vimium
     ];
 
     profiles.default = {
