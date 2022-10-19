@@ -11,6 +11,29 @@
       accel-profile = "flat";
     };
 
+    # disable <Super>l => lock
+    "org/gnome/settings-daemon/plugins/media-keys" = {
+      screensaver = [ "" ];
+    };
+
+    "org/gnome/shell/extensions/materialshell/layouts" = {
+      default-layout = "ratio";
+      gap = 25;
+      ratio = true;
+    };
+
+    "org/gnome/shell/extensions/materialshell/theme" = {
+      blur-background = true;
+      focus-effect = "border";
+      primary-color = "#c64600";
+      surface-opacity = 60;
+    };
+
+    "org/gnome/shell/extensions/materialshell/tweaks" = {
+      cycle-through-windows = true;
+      disable-notifications = true;
+    };
+
     "org/gnome/shell/extensions/materialshell/bindings" = {
       previous-window = ["<Super>H"];
       next-window = ["<Super>L"];
