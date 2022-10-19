@@ -85,7 +85,6 @@ in
   # Machine Id to fix journalctl logs from past boots
   # https://mt-caret.github.io/blog/posts/2020-06-29-optin-state.html
   environment.etc = {
-    adjtime.source = "/persist/etc/adjtime";
-    machine-id.source = "/persist/etc/machine-id";
+    machine-id.source = ../../${hostname}/machine-id;
   };
 }
