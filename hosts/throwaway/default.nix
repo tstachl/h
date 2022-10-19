@@ -13,6 +13,7 @@ in
     ../common/optional/nixos.nix
     ../common/optional/pipewire.nix
     ../common/optional/sops.nix
+    # ../common/optional/tailscale.nix
     ../common/optional/x11-no-suspend.nix
     ../common/optional/yubikey.nix
   ];

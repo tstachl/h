@@ -7,7 +7,6 @@
     ./openssh.nix
     ./podman.nix
     ./ripgrep.nix
-    ./tailscale.nix
   ];
 
   environment = {
