@@ -20,6 +20,13 @@ EOM
   exit 0
 }
 
+while getopts ':h' opt; do
+  case $opt in
+    h) usage;;
+    *) ;;
+  esac
+done
+
 device=$( printf '%s\n' "${@:$OPTIND:1}" )
 mount=$( printf '%s\n' "${@:$OPTIND+1:1}" )
 
