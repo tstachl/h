@@ -22,7 +22,7 @@ in
     shell = pkgs.fish;
     
     extraGroups = [ "wheel" "video" "audio" ] ++ ifExists [
-      "network" "wireshark" "i2c" "docker" "podman" "git" "libvirtd"
+      "network" "wireshark" "i2c" "docker" "podman" "git" "libvirtd" "keys"
     ];
 
     openssh.authorizedKeys.keys = [
