@@ -8,6 +8,7 @@
         LC_CTYPE = "en_US.UTF-8";
         TERM = "xterm-256color";
       };
+
       TERM = "alacritty";
 
       font = {
@@ -70,6 +71,11 @@
       };
 
       window = {
+        decorations = "None";
+        padding = {
+          x = 12;
+          y = 12;
+        };
         opacity = 0.8;
       };
 
