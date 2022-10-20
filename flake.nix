@@ -4,6 +4,8 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
+    hardware.url = "github:nixos/nixos-hardware";
+    impermanence.url = "github:nix-community/impermanence";
     nur.url = "github:nix-community/nur";
 
     home-manager = {
@@ -58,6 +60,12 @@
           system = "aarch64-linux";
           specialArgs = { inherit inputs; inherit (self) outputs; };
           modules = [ ./hosts/throwaway ];
+        };
+
+        odin = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = { inherit inputs; inherit (self) outputs; };
+          modules = [ ./hosts/odin ];
         };
       };
 

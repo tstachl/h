@@ -2,7 +2,8 @@
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
-    ../common/optional/btrfs-persistence.nix
+    ../common/optional/btrfs.nix
+    ../common/optional/persistence.nix
     # ../common/optional/encrypted-root.nix
     ../common/optional/systemd-boot.nix
   ];

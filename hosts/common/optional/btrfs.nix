@@ -1,12 +1,10 @@
-{ lib, config, pkgs, ... }:
+{ inputs, lib, config, ... }:
 let
   hostname = config.networking.hostName;
-in
-{
-  boot.initrd.supportedFilesystems = [ "btrfs" ];
+  hasPersistence = builtins.hasAttr "persistence" config.environment;
 
-  boot.initrd = {
-    postDeviceCommands = lib.mkBefore ''
+  wipeScript = if hasPersistence then
+    ''
       mkdir -p /mnt
       mount -o subvol=/ /dev/disk/by-label/${hostname} /mnt
 
@@ -28,20 +26,17 @@ in
       fi
 
       umount /mnt
-    '';
-  };
+    '' else "";
+in
+{
+  boot.initrd.postDeviceCommands = lib.mkBefore wipeScript;
+  boot.initrd.supportedFilesystems = [ "btrfs" ];
 
   fileSystems = {
     "/" = {
       device = "/dev/disk/by-label/${hostname}";
       fsType = "btrfs";
       options = [ "subvol=root" "compress=zstd" "noatime" ];
-    };
-
-    "/home" = {
-      device = "/dev/disk/by-label/${hostname}";
-      fsType = "btrfs";
-      options = [ "subvol=home" "compress=zstd" "noatime" ];
     };
 
     "/nix" = {
@@ -68,23 +63,4 @@ in
     device = "/swap/swapfile";
     size = 4096;
   }];
-
-  # OpenSSH
-  services.openssh.hostKeys = lib.mkIf (config.services.openssh.enable) [
-    {
-      bits = 4096;
-      path = "/persist/etc/ssh/ssh_host_rsa_key";
-      type = "rsa";
-    }
-    {
-      path = "/persist/etc/ssh/ssh_host_ed25519_key";
-      type = "ed25519";
-    }
-  ];
-
-  # Machine Id to fix journalctl logs from past boots
-  # https://mt-caret.github.io/blog/posts/2020-06-29-optin-state.html
-  environment.etc = {
-    machine-id.source = ../../${hostname}/machine-id;
-  };
 }
