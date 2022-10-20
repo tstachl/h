@@ -49,16 +49,6 @@ if [ -z "$hostname" ]; then
   exit 1
 fi
 
-# cat << EOM
-# 
-# create=$create
-# encrypt=$encrypt
-# mount=$mount
-# device=$device
-# hostname=$hostname
-# 
-# EOM
-
 if [[ "$create" = true ]]; then
   # Creating Partitions
   parted "$device" -- mklabel gpt
@@ -82,7 +72,6 @@ if [[ "$create" = true ]]; then
 
   # Create Subvolumes
   btrfs subvolume create /mnt/root
-  btrfs subvolume create /mnt/home
   btrfs subvolume create /mnt/nix
   btrfs subvolume create /mnt/persist
   btrfs subvolume create /mnt/swap
@@ -97,9 +86,6 @@ fi
 if [ "$mount" = true ]; then
   # Mount Everything
   mount -o subvol=root,compress=zstd,noatime "/dev/disk/by-label/$hostname" /mnt
-  
-  [ ! -d "/mnt/home" ] && mkdir /mnt/home
-  mount -o subvol=home,compress=zstd,noatime "/dev/disk/by-label/$hostname" /mnt/home
   
   [ ! -d "/mnt/nix" ] && mkdir /mnt/nix
   mount -o subvol=nix,compress=zstd,noatime "/dev/disk/by-label/$hostname" /mnt/nix
