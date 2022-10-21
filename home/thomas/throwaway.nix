@@ -1,7 +1,22 @@
+{ inputs, ... }:
 {
   imports = [
+    inputs.impermanence.nixosModules.home-manager.impermanence
     ./global.nix
     ./features/desktop
-    ./features/nvim 
+    ./features/nvim
   ];
+
+  home.persistence."/persist/home/thomas" = {
+    directories = [
+      "Downloads"
+      "Music"
+      "Pictures"
+      "Documents"
+      "Videos"
+      ".config/BraveSoftware"
+    ];
+
+    allowOther = true;
+  };
 }

@@ -7,6 +7,7 @@
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
     nur.url = "github:nix-community/nur";
+    brave.url = "github:tstachl/nixpkgs";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -28,7 +29,7 @@
         "x86_64-darwin"
         "x86_64-linux"
       ];
-      
+
       pkgsFor = forAllSystems (system:
         import nixpkgs {
           inherit system;
@@ -36,10 +37,6 @@
           config = {
             allowUnfree = true;
             allowUnsupportedSystem = true;
-
-            # TODO: remove this when material-shell-26 is available
-            # allow gnome extensions
-            # firefox.enableGnomeExtensions = true;
           };
         }
       );
