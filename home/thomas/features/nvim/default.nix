@@ -50,6 +50,7 @@
       nvim-cmp
       nvim-autopairs
       which-key-nvim
+      editorconfig-nvim
     ];
     extraConfig = ''
       lua <<EOF
