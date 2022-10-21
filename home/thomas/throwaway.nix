@@ -14,7 +14,6 @@
       "Pictures"
       "Documents"
       "Videos"
-      ".config/BraveSoftware"
     ];
 
     allowOther = false;
