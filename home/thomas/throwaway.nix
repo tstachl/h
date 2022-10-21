@@ -17,6 +17,6 @@
       ".config/BraveSoftware"
     ];
 
-    allowOther = true;
+    allowOther = false;
   };
 }
