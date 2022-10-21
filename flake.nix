@@ -39,7 +39,7 @@
 
             # TODO: remove this when material-shell-26 is available
             # allow gnome extensions
-            firefox.enableGnomeExtensions = true;
+            # firefox.enableGnomeExtensions = true;
           };
         }
       );

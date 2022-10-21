@@ -3,6 +3,7 @@
   home.packages = (with pkgs; [
     # TODO: add this when material-shell-26 is available
     # gnomeExtensions.material-shell
+    gnome43Extensions."material-shell@papyelgringo"
   ]);
 
   dconf.settings = {
