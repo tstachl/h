@@ -7,6 +7,7 @@
     ./gnupg.nix
     ./jq.nix
     ./rbw.nix
+    ./ripgrep.nix
     ./ssh.nix
     ./starship.nix
   ];

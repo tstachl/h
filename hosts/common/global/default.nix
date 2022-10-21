@@ -6,7 +6,6 @@
     ./nix.nix
     ./openssh.nix
     ./podman.nix
-    ./ripgrep.nix
   ];
 
   environment = {
