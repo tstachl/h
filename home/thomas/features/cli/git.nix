@@ -91,7 +91,7 @@
 
         branch = {
           current = "yellow reverse";
-          local = "yello";
+          local = "yellow";
           remote = "green";
         };
 
@@ -117,7 +117,7 @@
       push.default = "matching";
       pull.rebase = "false";
       init.defaultBranch = "master";
-      
+
       url = {
         "git@github.com:" = {
           insteadOf = "github:";
