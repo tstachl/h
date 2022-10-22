@@ -5,7 +5,7 @@ require("bufferline").setup {
     right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
     left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
     modified_icon = "●",
-    tab_size = 30,
+    -- tab_size = ,
     offsets = {
       { filetype = "NvimTree", text = "", padding = 1 },
       { filetype = "toggleterm", text = "", padding = 0 },
