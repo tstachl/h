@@ -4,11 +4,10 @@ let
 in
 {
   imports = [
-    # ./services
     ./hardware-configuration.nix
 
     ../common/global
-    #../common/users/pi.nix
+    ../common/users/pi.nix
 
     ../common/optional/nixos.nix
     ../common/optional/sops.nix
