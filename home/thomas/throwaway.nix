@@ -20,6 +20,10 @@
       }
     ];
 
+    files = [
+      ".config/monitors.xml"
+    ];
+
     allowOther = true;
   };
 }
