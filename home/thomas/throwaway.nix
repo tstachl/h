@@ -14,8 +14,12 @@
       "Pictures"
       "Documents"
       "Videos"
+      {
+        directory = ".config/BraveSoftware/";
+        method = "symlink";
+      }
     ];
 
-    allowOther = false;
+    allowOther = true;
   };
 }
