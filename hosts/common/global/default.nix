@@ -1,4 +1,4 @@
-{ lib, inputs, ... }:
+{ pkgs, ... }:
 {
   imports = [
     ./gnupg.nix
@@ -16,5 +16,10 @@
 
     # add terminfo files
     enableAllTerminfo = true;
+
+    # add important packages
+    systemPackages = with pkgs; [
+      git parted
+    ];
   };
 }
