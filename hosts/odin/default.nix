@@ -1,6 +1,6 @@
 { config, ... }:
 let
-  inherit (config.sops) secrets;
+  # inherit (config.sops) secrets;
 in
 {
   imports = [
@@ -10,13 +10,14 @@ in
     ../common/users/pi.nix
 
     ../common/optional/nixos.nix
-    ../common/optional/sops.nix
+    # ../common/optional/sops.nix
     # ../common/optional/tailscale.nix
   ];
 
-  sops.defaultSopsFile = ./secrets.yml;
-  sops.secrets.pi.neededForUsers = true;
-  users.users.pi.passwordFile = secrets.pi.path;
+  # sops.defaultSopsFile = ./secrets.yml;
+  # sops.secrets.pi.neededForUsers = true;
+  # users.users.pi.passwordFile = secrets.pi.path;
+  users.users.pi.password = "thomas";
 
   networking.hostName = "odin";
   time.timeZone = "Europe/Vienna";

@@ -4,7 +4,7 @@
     inputs.hardware.nixosModules.raspberry-pi-4
     # ../common/optional/btrfs-persistence.nix
     # ../common/optional/encrypted-root.nix
-    ../common/optional/systemd-boot.nix
+    # ../common/optional/systemd-boot.nix
   ];
 
 # builtins.hasAttr "persistence" outputs.nixosConfigurations.throwaway.ctrueg.environment
@@ -19,17 +19,27 @@
 
 
   fileSystems = {
-    "/boot" = {
-      device = "/dev/disk/by-label/BOOT";
+    # "/boot" = {
+    #   device = "/dev/disk/by-label/BOOT";
+    #   fsType = "ext4";
+    #   neededForBoot = true;
+    # };
+
+    # "/firmware" = {
+    #   device = "/dev/disk/by-label/FIRMWARE";
+    #   fsType = "vfat";
+    # };
+
+    "/" = {
+      device = "/dev/disk/by-label/nixos";
       fsType = "ext4";
       neededForBoot = true;
     };
-
-    "/firmware" = {
-      device = "/dev/disk/by-label/FIRMWARE";
-      fsType = "vfat";
-    };
   };
+
+  swapDevices = [{
+    device = "/dev/disk/by-label/swap";
+  }];
 
   nixpkgs.hostPlatform.system = "aarch64-linux";
   networking.useDHCP = lib.mkDefault true;
