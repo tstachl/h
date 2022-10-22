@@ -11,4 +11,7 @@ creation_rules:
       - *throwaway
     - pgp:
       - *thomas
-
+  - path_regex: hosts/odin/secrets.yml$
+    key_groups:
+    - pgp:
+      - *thomas

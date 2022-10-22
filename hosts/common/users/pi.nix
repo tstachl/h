@@ -17,11 +17,11 @@ in
   };
 
   users.mutableUsers = false;
-  users.users.thomas = {
+  users.users.pi = {
     isNormalUser = true;
     shell = pkgs.fish;
 
-    extraGroups = [ "wheel" "video" "audio" ] ++ ifExists [
+    extraGroups = [ "wheel" ] ++ ifExists [
       "network" "wireshark" "i2c" "docker" "podman" "git" "libvirtd" "keys"
     ];
 
