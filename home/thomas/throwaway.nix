@@ -9,11 +9,11 @@
 
   home.persistence."/persist/home/thomas" = {
     directories = [
-      "Downloads"
-      "Music"
-      "Pictures"
-      "Documents"
-      "Videos"
+      # must have at least one bind mount
+      {
+        directory = "Workspace";
+        method = "bindfs";
+      }
       {
         directory = ".config/BraveSoftware/";
         method = "symlink";
