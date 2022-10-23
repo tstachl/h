@@ -7,7 +7,7 @@
       g = "git";
       "..." = "cd ../..";
       "...." = "cd ../../..";
-      hms = "home-manager switch --flake ~/Documents/tstachl/h#$USER@$(hostname)";
+      hms = "home-manager switch --flake ~/Workspace/tstachl/h#$USER@$(hostname)";
     };
 
     interactiveShellInit = lib.mkAfter ''
