@@ -3,6 +3,7 @@ keys:
     - &thomas 7A53D4C6B481F7711588D34FDE749C31D060A160
   - &hosts:
     - &throwaway age160n4r08zhxqzy4a02p2tu3pxrcks2y5g20qw2c6x44svfmddk5ms092wlt
+    - &odin age1zqtpmz0w84e4vn9hy5dqzsayfqas5nddu8n5f83rtctkqqey7q0qgye3k4
 
 creation_rules:
   - path_regex: hosts/throwaway/secrets.yml$
@@ -13,5 +14,7 @@ creation_rules:
       - *thomas
   - path_regex: hosts/odin/secrets.yml$
     key_groups:
+    - age:
+      - *odin
     - pgp:
       - *thomas
