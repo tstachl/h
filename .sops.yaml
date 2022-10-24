@@ -6,15 +6,10 @@ keys:
     - &odin age1zqtpmz0w84e4vn9hy5dqzsayfqas5nddu8n5f83rtctkqqey7q0qgye3k4
 
 creation_rules:
-  - path_regex: hosts/throwaway/secrets.yml$
+  - path_regex: hosts/common/users/secrets/thomas.yml$
     key_groups:
     - age:
       - *throwaway
-    - pgp:
-      - *thomas
-  - path_regex: hosts/odin/secrets.yml$
-    key_groups:
-    - age:
       - *odin
-    - pgp:
+      pgp:
       - *thomas

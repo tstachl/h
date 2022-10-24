@@ -1,7 +1,3 @@
-{ inputs, config, pkgs, ... }:
-let
-  inherit (config.sops) secrets;
-in
 {
   imports = [
     ./hardware-configuration.nix
@@ -17,16 +13,6 @@ in
     ../common/optional/x11-no-suspend.nix
     ../common/optional/yubikey.nix
   ];
-
-  sops.defaultSopsFile = ./secrets.yml;
-  sops.secrets.thomas.neededForUsers = true;
-  users.users.thomas.passwordFile = secrets.thomas.path;
-
-  sops.secrets.github_cli = {
-    mode = "0440";
-    owner = config.users.users.thomas.name;
-    group = config.users.users.thomas.group;
-  };
 
   networking.hostName = "throwaway";
   time.timeZone = "America/Los_Angeles";
