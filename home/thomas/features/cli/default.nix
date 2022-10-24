@@ -1,6 +1,7 @@
 {
   imports = [
     ./abduco.nix
+    ./direnv.nix
     ./fish.nix
     ./git.nix
     ./github.nix
