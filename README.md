@@ -87,3 +87,12 @@ difficult than that. Here are some options I'm investigating:
 1. Activation Scripts
 
 2. Manual backup & restore
+
+## Odin SD Card
+
+The nixos configuration for `odin` gives the option to build an sd card with the
+following command:
+
+```sh
+nix build .#nixosConfigurations.odin.config.system.build.sdImage
+```
