@@ -1,7 +1,7 @@
 { inputs, lib, modulesPath, ... }:
 {
   imports = [
-    (modulesPath + "/installer/sd-card/sd-image-aarch64-new-kernel.nix")
+    ../../modules/nixos/sd-image.nix
     inputs.hardware.nixosModules.raspberry-pi-4
   ];
 
