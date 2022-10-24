@@ -18,9 +18,14 @@
       url = "github:mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    nixos-generators = {
+      url = "github:nix-community/nixos-generators";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, nixos-generators, ... }@inputs:
     let
       forAllSystems = nixpkgs.lib.genAttrs [
         "aarch64-linux"
@@ -74,5 +79,13 @@
         };
       };
 
+      images = {
+        odin = nixos-generators.nixosGenerate {
+          system = "aarch64-linux";
+          specialArgs = { inherit inputs; inherit (self) outputs; };
+          modules = [ ./hosts/odin ];
+          format = "sd-aarch64-installer";
+        };
+      };
     };
 }

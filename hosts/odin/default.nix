@@ -1,4 +1,4 @@
-{ config, ... }:
+{ config, inputs, ... }:
 let
   inherit (config.sops) secrets;
 in
@@ -20,5 +20,5 @@ in
 
   networking.hostName = "odin";
   time.timeZone = "Europe/Vienna";
-  system.stateVersion = "22.05";
+  system.stateVersion = "22.11";
 }
