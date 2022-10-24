@@ -77,6 +77,12 @@
           extraSpecialArgs = { inherit inputs; inherit (self) outputs; };
           modules = [ ./home/thomas/throwaway.nix ];
         };
+
+        "thomas@odin" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor."aarch64-linux";
+          extraSpecialArgs = { inherit inputs; inherit (self) outputs; };
+          modules = [ ./home/thomas/odin.nix ];
+        };
       };
 
       images = {
