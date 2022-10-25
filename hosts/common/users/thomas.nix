@@ -38,11 +38,11 @@ in
       directories = [
         "Workspace"
         { directory = ".config/BraveSoftware/"; mode = "0700"; }
-        { directory = ".config/gh/"; mode = "0700"; }
       ];
 
       files = [
         ".config/monitors.xml"
+        ".config/gh/hosts.yml"
       ];
     };
   };
