@@ -10,10 +10,7 @@
   home.persistence."/persist/home/thomas" = {
     directories = [
       # must have at least one bind mount
-      {
-        directory = "Workspace";
-        method = "bindfs";
-      }
+      "Workspace"
       {
         directory = ".config/BraveSoftware/";
         method = "symlink";
