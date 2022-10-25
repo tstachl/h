@@ -1,7 +1,10 @@
 { inputs, lib, modulesPath, ... }:
 {
   imports = [
-    ../../modules/nixos/sd-image.nix
+    # complains about the zfs kernel module
+    (modulesPath + "/installer/sd-card/sd-image-aarch64-new-kernel.nix")
+    # breaks on the sun4i-drm module
+    # ../../modules/nixos/sd-image.nix
     inputs.hardware.nixosModules.raspberry-pi-4
   ];
 

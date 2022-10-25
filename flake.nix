@@ -13,16 +13,6 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    sops-nix = {
-      url = "github:mic92/sops-nix";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
-    nixos-generators = {
-      url = "github:nix-community/nixos-generators";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
   outputs = { self, nixpkgs, home-manager, nixos-generators, ... }@inputs:
@@ -82,15 +72,6 @@
           pkgs = pkgsFor."aarch64-linux";
           extraSpecialArgs = { inherit inputs; inherit (self) outputs; };
           modules = [ ./home/thomas/odin.nix ];
-        };
-      };
-
-      images = {
-        odin = nixos-generators.nixosGenerate {
-          system = "aarch64-linux";
-          specialArgs = { inherit inputs; inherit (self) outputs; };
-          modules = [ ./hosts/odin ];
-          format = "sd-aarch64-installer";
         };
       };
     };
