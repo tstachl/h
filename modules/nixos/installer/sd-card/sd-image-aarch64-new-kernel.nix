@@ -2,7 +2,8 @@
 {
   imports = [
     (modulesPath + "/profiles/base.nix")
-    (modulesPath + "/installer/sd-card/sd-image.nix")
+    # (modulesPath + "/installer/sd-card/sd-image.nix")
+    ./sd-image.nix
   ];
 
   boot.loader.grub.enable = false;
@@ -13,6 +14,7 @@
   # The serial ports listed here are:
   # - ttyAMA0: for QEMU's machine virt
   boot.kernelParams = [ "console=ttyAMA0,115200n8" ];
+  boot.kernelPackages = pkgs.linuxPackages_latest;
 
   sdImage = {
     populateFirmwareCommands = let

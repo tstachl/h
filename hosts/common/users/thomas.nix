@@ -33,17 +33,17 @@ in
     ];
   };
 
-  environment = lib.mkIf hasPersistence {
-    persistence."/persist".users.thomas = {
-      directories = [
-        "Workspace"
-        { directory = ".config/BraveSoftware/"; mode = "0700"; }
-      ];
+  # environment = lib.mkIf hasPersistence {
+  #   persistence."/persist".users.thomas = {
+  #     directories = [
+  #       "Workspace"
+  #       { directory = ".config/BraveSoftware/"; mode = "0700"; }
+  #     ];
 
-      files = [
-        ".config/monitors.xml"
-        ".config/gh/hosts.yml"
-      ];
-    };
-  };
+  #     files = [
+  #       ".config/monitors.xml"
+  #       ".config/gh/hosts.yml"
+  #     ];
+  #   };
+  # };
 }
