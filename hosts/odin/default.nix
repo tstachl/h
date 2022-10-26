@@ -6,7 +6,6 @@
     ../common/users/thomas.nix
 
     ../common/optional/nixos.nix
-    ../common/optional/sops.nix
     # ../common/optional/tailscale.nix
   ];
 
