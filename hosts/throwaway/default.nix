@@ -3,7 +3,7 @@
     ./hardware-configuration.nix
 
     # ../common/global
-    # ../common/users/thomas.nix
+    ../common/users/thomas.nix
 
     # ../common/optional/gnome.nix
     # ../common/optional/nixos.nix
