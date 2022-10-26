@@ -3,7 +3,7 @@
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
     ../common/optional/filesystem.nix
-    # ../common/optional/fuse.nix
+    ../common/optional/fuse.nix
     # ../common/optional/state.nix
     ../common/optional/systemd-boot.nix
   ];
