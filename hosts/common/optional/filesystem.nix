@@ -9,20 +9,20 @@ in
     "/nix" = {
       device = "/dev/disk/by-label/${hostName}";
       fsType = "btrfs";
-      options = [ "subvol=nix" "compress=zstd" "noatime" ];
+      options = [ "subvol=n" "compress=zstd" "noatime" ];
     };
 
-    "/state" = {
+    "/persist" = {
       device = "/dev/disk/by-label/${hostName}";
       fsType = "btrfs";
-      options = [ "subvol=persist" "compress=zstd" "noatime" ];
+      options = [ "subvol=p" "compress=zstd" "noatime" ];
       neededForBoot = true;
     };
 
     "/swap" = {
       device = "/dev/disk/by-label/${hostName}";
       fsType = "btrfs";
-      options = [ "subvol=swap" "noatime" "nodatacow" ];
+      options = [ "subvol=s" "noatime" "nodatacow" ];
     };
   };
 

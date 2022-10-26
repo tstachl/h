@@ -4,7 +4,7 @@
     inputs.impermanence.nixosModules.impermanence
   ];
 
-  environment.persistence."/state" = {
+  environment.persistence."/persist" = {
     hideMounts = true;
 
     directories = [
@@ -37,11 +37,11 @@
     hostKeys = [
       {
         bits = 4096;
-        path = "/state/etc/ssh/ssh_host_rsa_key";
+        path = "/persist/etc/ssh/ssh_host_rsa_key";
         type = "rsa";
       }
       {
-        path = "/state/etc/ssh/ssh_host_ed25519_key";
+        path = "/persist/etc/ssh/ssh_host_ed25519_key";
         type = "ed25519";
       }
     ];
