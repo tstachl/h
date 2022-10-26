@@ -2,10 +2,9 @@
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
-    ../common/optional/btrfs.nix
-    ../common/optional/persistence.nix
+    ../common/optional/filesystem.nix
     ../common/optional/fuse.nix
-    # ../common/optional/encrypted-root.nix
+    ../common/optional/state.nix
     ../common/optional/systemd-boot.nix
   ];
 
@@ -23,6 +22,12 @@
     "/boot" = {
       device = "/dev/disk/by-label/boot";
       fsType = "vfat";
+    };
+
+    "/" = {
+      device = "none";
+      fsType = "tmpfs";
+      options = [ "defaults" "size=2G" "mode=755" ];
     };
   };
 

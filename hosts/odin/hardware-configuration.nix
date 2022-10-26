@@ -1,4 +1,7 @@
-{ inputs, lib, modulesPath, ... }:
+{ config, inputs, lib, modulesPath, ... }:
+let
+  inherit (config.networking) hostName;
+in
 {
   imports = [
     # complains about the zfs kernel module
@@ -15,7 +18,7 @@
     loader.timeout = 5;
   };
 
-  fileSystems = {
+  fileSystems = lib.mkDefault {
     "/boot/firmware" = {
       device = "/dev/disk/by-label/FIRMWARE";
       fsType = "vfat";
@@ -27,31 +30,7 @@
       fsType = "tmpfs";
       options = [ "defaults" "size=2G" "mode=755" ];
     };
-
-    "/nix" = {
-      device = "/dev/disk/by-label/${hostname}";
-      fsType = "btrfs";
-      options = [ "subvol=nix" "compress=zstd" "noatime" ];
-    };
-
-    "/persist" = {
-      device = "/dev/disk/by-label/${hostname}";
-      fsType = "btrfs";
-      options = [ "subvol=persist" "compress=zstd" "noatime" ];
-      neededForBoot = true;
-    };
-
-    "/swap" = {
-      device = "/dev/disk/by-label/${hostname}";
-      fsType = "btrfs";
-      options = [ "subvol=swap" "noatime" "nodatacow" ];
-    };
   };
-
-  swapDevices = [{
-    device = "/swap/swapfile";
-    size = 4096;
-  }];
 
   sdImage = {
     compressImage = false;

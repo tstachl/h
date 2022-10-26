@@ -1,8 +1,6 @@
 { outputs, config, lib, ... }:
 let
   hosts = builtins.attrNames outputs.nixosConfigurations;
-  hasPersistence = builtins.hasAttr "persistence" config.environment;
-  prefix = if hasPersistence then "/persist" else "";
 in
 {
   services.openssh = {
@@ -17,14 +15,14 @@ in
     # Allow forwarding ports to everywhere
     # gatewayPorts = "clientspecified";
 
-    hostKeys = [
+    hostKeys = lib.mkDefault [
       {
         bits = 4096;
-        path = "${prefix}/etc/ssh/ssh_host_rsa_key";
+        path = "/etc/ssh/ssh_host_rsa_key";
         type = "rsa";
       }
       {
-        path = "${prefix}/etc/ssh/ssh_host_ed25519_key";
+        path = "/etc/ssh/ssh_host_ed25519_key";
         type = "ed25519";
       }
     ];
