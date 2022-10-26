@@ -1,11 +1,11 @@
 { pkgs, ... }:
 {
   imports = [
-    ./gnupg.nix
-    ./locale.nix
-    ./nix.nix
-    ./openssh.nix
-    ./podman.nix
+    # ./gnupg.nix
+    # ./locale.nix
+    # ./nix.nix
+    # ./openssh.nix
+    # ./podman.nix
   ];
 
   environment = {
