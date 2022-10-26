@@ -3,7 +3,7 @@
   imports = [
     ./gnupg.nix
     ./locale.nix
-    # ./nix.nix
+    ./nix.nix
     # ./openssh.nix
     # ./podman.nix
   ];
