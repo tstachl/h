@@ -5,17 +5,13 @@ in
 {
   services.openssh = {
     enable = true;
-    # Harden
     passwordAuthentication = false;
     permitRootLogin = "no";
-    # Automatically remove stale sockets
     extraConfig = ''
       StreamLocalBindUnlink yes
     '';
-    # Allow forwarding ports to everywhere
-    # gatewayPorts = "clientspecified";
 
-    hostKeys = lib.mkDefault [
+    hostKeys = [
       {
         bits = 4096;
         path = "/etc/ssh/ssh_host_rsa_key";
