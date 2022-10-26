@@ -73,6 +73,12 @@
           extraSpecialArgs = { inherit inputs; inherit (self) outputs; };
           modules = [ ./home/thomas/odin.nix ];
         };
+
+        "thomas@penguin" = home-manager.lib.homeManagerConfiguration {
+          pkgs = pkgsFor."x86_64-linux";
+          extraSpecialArgs = { inherit inputs; inherit (self) outputs; };
+          modules = [ ./home/thomas/penguin.nix ];
+        };
       };
     };
 }
