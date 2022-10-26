@@ -1,7 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
-    # ./gnupg.nix
+    ./gnupg.nix
     # ./locale.nix
     # ./nix.nix
     # ./openssh.nix
