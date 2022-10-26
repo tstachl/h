@@ -12,11 +12,11 @@
       auto-optimise-store = lib.mkDefault true;
     };
     package = pkgs.nixUnstable;
-    # extraOptions = ''
-    #   auto-optimise-store = true
-    #   experimental-features = nix-command flakes repl-flake
-    #   warn-dirty = false
-    # '';
+    extraOptions = ''
+      auto-optimise-store = true
+      experimental-features = nix-command flakes repl-flake
+      warn-dirty = false
+    '';
     # gc = {
     #   automatic = true;
     #   dates = "weekly";
