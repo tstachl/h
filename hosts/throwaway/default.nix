@@ -2,7 +2,7 @@
   imports = [
     ./hardware-configuration.nix
 
-    # ../common/global
+    ../common/global
     ../common/users/thomas.nix
 
     # ../common/optional/gnome.nix
