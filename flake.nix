@@ -59,6 +59,12 @@
           specialArgs = { inherit inputs; inherit (self) outputs; };
           modules = [ ./hosts/odin ];
         };
+
+        penguin = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; inherit (self) outputs; };
+          modules = [ ./hosts/penguin ];
+        };
       };
 
       homeConfigurations = {

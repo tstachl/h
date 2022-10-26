@@ -96,3 +96,49 @@ following command:
 ```sh
 nix build .#nixosConfigurations.odin.config.system.build.sdImage
 ```
+
+## Filesystem Setup
+
+### Ext4 vs Btrfs
+
+In my opinion Btrfs is the clear winner when choosing a fileystem. Especially
+since it also allows for deduplication which saves space. I only have 128 GB
+internal disk space on `penguin`, which can be extended with a micro sd card.
+And seeing that Btrfs allows you to span a filesystem over multiple devices,
+this might also come in handy in the future.
+
+### Tmpfs
+
+For root, I want to utilize tmpfs. It get's wiped and freshly set up with every
+boot of the computer. Only specificly defined directories and folders should be
+persisted.
+
+```nix
+{
+  fileSystems = {
+    "/" = {
+      device = "none";
+      fsType = "tmpfs";
+      options = [ "defaults" "size=2G" "mode=755" ];
+    };
+
+    "/nix" = {
+      device = "/dev/disk/by-label/${hostname}";
+      fsType = "btrfs";
+      options = [ "subvol=n" "compress=zstd" "noatime" ];
+    };
+
+    "/p" = {
+      device = "/dev/disk/by-label/${hostname}";
+      fsType = "btrfs";
+      options = [ "subvol=p" "compress=zstd" "noatime" ];
+    };
+
+    "/s" = {
+      device = "/dev/disk/by-label/${hostname}";
+      fsType = "btrfs";
+      options = [ "subvol=s" "noatime" "nodatacow" ];
+    };
+  };
+}
+```
