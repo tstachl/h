@@ -23,9 +23,9 @@
       options = "--delete-older-than 30d";
     };
 
-    # # Add each flake input as a registry
-    # # To make nix3 commands consistent with the flake
-    # registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
+    # Add each flake input as a registry
+    # To make nix3 commands consistent with the flake
+    registry = lib.mapAttrs (_: value: { flake = value; }) inputs;
 
     # # Map registries to channels
     # # Very useful when using legacy commands
