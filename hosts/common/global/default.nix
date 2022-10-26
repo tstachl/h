@@ -3,9 +3,9 @@
   imports = [
     ./gnupg.nix
     ./locale.nix
-    ./nix.nix
-    # ./openssh.nix
-    # ./podman.nix
+    # ./nix.nix
+    ./openssh.nix
+    ./podman.nix
   ];
 
   environment = {
