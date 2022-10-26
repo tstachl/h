@@ -28,7 +28,13 @@
   #     options = [ "defaults" "size=2G" "mode=755" ];
   #   };
 
-  #   "nix" = {
+  #   "/boot" = {
+  #     device = "/dev/disk/by-label/${config.networking.hostName}";
+  #     fsType = "btrfs";
+  #     options = [ "subvol=boot" "compress=zstd" "noatime" ];
+  #   };
+
+  #   "/nix" = {
   #     device = "/dev/disk/by-label/${config.networking.hostName}";
   #     fsType = "btrfs";
   #     options = [ "subvol=nix" "compress=zstd" "noatime" ];
