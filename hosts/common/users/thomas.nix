@@ -7,14 +7,14 @@ in
 {
   # TODO: currently only using fish with thomas user
   # maybe I should just move fish into the home-manager config
-  # programs.fish = {
-  #   enable = true;
-  #   vendor = {
-  #     completions.enable = true;
-  #     config.enable = true;
-  #     functions.enable = true;
-  #   };
-  # };
+  programs.fish = {
+    enable = true;
+    vendor = {
+      completions.enable = true;
+      config.enable = true;
+      functions.enable = true;
+    };
+  };
 
   users.mutableUsers = false;
   users.users.thomas = {
