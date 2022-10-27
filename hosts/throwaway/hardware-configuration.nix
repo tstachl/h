@@ -1,8 +1,10 @@
-{ lib, modulesPath, ... }:
+{ config, lib, modulesPath, ... }:
+let
+  inherit (config.networking) hostName;
+in
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
-    ../common/optional/filesystem.nix
     ../common/optional/fuse.nix
     ../common/optional/state.nix
     ../common/optional/systemd-boot.nix
@@ -10,6 +12,7 @@
 
   boot = {
     initrd = {
+      supportedFilesystems = [ "btrfs" ];
       availableKernelModules = [ "xhci_pci" "virtio_pci" "usbhid" "usb_storage" "sr_mod" ];
       kernelModules = [ ];
     };
@@ -27,9 +30,33 @@
     "/" = {
       device = "none";
       fsType = "tmpfs";
-      options = [ "defaults" "size=2G" "mode=755" ];
+      options = [ "defaults" "mode=755" ];
+    };
+
+    "/nix" = {
+      device = "/dev/disk/by-label/${hostName}";
+      fsType = "btrfs";
+      options = [ "subvol=nix" "compress=zstd" "noatime" ];
+    };
+
+    "/persist" = {
+      device = "/dev/disk/by-label/${hostName}";
+      fsType = "btrfs";
+      options = [ "subvol=persist" "compress=zstd" "noatime" ];
+      neededForBoot = true;
+    };
+
+    "/swap" = {
+      device = "/dev/disk/by-label/${hostName}";
+      fsType = "btrfs";
+      options = [ "subvol=swap" "noatime" "nodatacow" ];
     };
   };
+
+  swapDevices = [{
+    device = "/swap/swapfile";
+    size = 4096;
+  }];
 
   nixpkgs.hostPlatform.system = "aarch64-linux";
   networking.useDHCP = lib.mkDefault true;
