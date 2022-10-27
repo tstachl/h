@@ -29,6 +29,7 @@
       files = [
         ".config/monitors.xml"
         ".config/gh/hosts.yml"
+        ".cache/rbw/https%3A%2F%2Fwarden.vault.pilina.com:bw-cli@pilina.email.json"
       ];
     };
   };
