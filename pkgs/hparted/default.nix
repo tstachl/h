@@ -1,5 +1,5 @@
 { writeShellApplication }:
 writeShellApplication {
   name = "hparted";
-  text = builtins.readFile ./parted.sh;
+  text = builtins.readFile ./hparted.sh;
 }

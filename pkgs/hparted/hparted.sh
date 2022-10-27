@@ -2,7 +2,7 @@
 set -euo pipefail
 
 if [[ $EUID -ne 0 ]]; then
-   echo "This script must be run as root" 
+   echo "This script must be run as root"
    exit 1
 fi
 
@@ -71,13 +71,9 @@ if [[ "$create" = true ]]; then
   mount -t btrfs "${device}1" /mnt
 
   # Create Subvolumes
-  btrfs subvolume create /mnt/root
   btrfs subvolume create /mnt/nix
   btrfs subvolume create /mnt/persist
   btrfs subvolume create /mnt/swap
-
-  # Take a Blank Snapshot
-  btrfs subvolume snapshot -r /mnt/root /mnt/root-blank
 
   # BTRFS done
   umount /mnt
@@ -85,17 +81,17 @@ fi
 
 if [ "$mount" = true ]; then
   # Mount Everything
-  mount -o subvol=root,compress=zstd,noatime "/dev/disk/by-label/$hostname" /mnt
-  
+  mount -t tmpfs -o defaults,mode=755 none /mnt
+
   [ ! -d "/mnt/nix" ] && mkdir /mnt/nix
   mount -o subvol=nix,compress=zstd,noatime "/dev/disk/by-label/$hostname" /mnt/nix
-  
+
   [ ! -d "/mnt/persist" ] && mkdir /mnt/persist
   mount -o subvol=persist,compress=zstd,noatime "/dev/disk/by-label/$hostname" /mnt/persist
-  
+
   [ ! -d "/mnt/swap" ] && mkdir /mnt/swap
   mount -o subvol=swap,compress=noatime "/dev/disk/by-label/$hostname" /mnt/swap
-  
+
   [ ! -d "/mnt/boot" ] && mkdir /mnt/boot
   mount /dev/disk/by-label/boot /mnt/boot
 fi
