@@ -8,6 +8,7 @@
     ./github.nix
     ./gnupg.nix
     ./jq.nix
+    ./pass.nix
     ./rbw.nix
     ./ripgrep.nix
     ./ssh.nix
