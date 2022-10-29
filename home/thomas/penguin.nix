@@ -1,13 +1,7 @@
-{ pkgs, ... }:
 {
   imports = [
-    ./global.nix
-    ./features/desktop/alacritty.nix
-    ./features/desktop/fonts.nix
+    ./global
+    ./features/desktop
     ./features/nvim
-  ];
-
-  home.packages = with pkgs; [
-    pkgs.brave
   ];
 }
