@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
   home.packages = (with pkgs; [
-    # TODO: add this when material-shell-26 is available
-    # gnomeExtensions.material-shell
     gnome43Extensions."material-shell@papyelgringo"
   ]);
 
@@ -43,7 +41,7 @@
     };
 
     "org/gnome/shell/extensions/materialshell/layouts" = {
-      default-layout = "ratio";
+      default-layout = "half";
       gap = 25;
       ratio = true;
     };
@@ -96,11 +94,11 @@
       move-window-to-workspace-8 = ["<Shift><Super>8"];
       move-window-to-workspace-9 = ["<Shift><Super>9"];
       move-window-to-workspace-10 = ["<Shift><Super>0"];
-     
+
       cycle-tiling-layout = ["<Super>I"];
       reverse-cycle-tiling-layout = ["<Shift><Super>I"];
       toggle-material-shell-ui = ["<Super>Escape"];
-      
+
       use-maximize-layout = [""];
       use-split-layout = [""];
       use-half-layout = [""];
