@@ -1,7 +1,7 @@
 { inputs, ... }:
 {
   imports = [
-    ./global.nix
+    ./global
     ./features/desktop
     ./features/nvim
   ];

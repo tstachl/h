@@ -1,5 +1,10 @@
 { lib, ... }:
 {
+  home.sessionVariables = {
+    PASSWORD_STORE_DIR = "~";
+    PASSWORD_STORE_KEY = "test";
+  };
+
   programs.fish = {
     enable = true;
 

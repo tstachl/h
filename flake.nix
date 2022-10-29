@@ -2,21 +2,18 @@
   description = "my configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
-    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    # unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     brave.url = "github:tstachl/nixpkgs";
+
+    home-manager.url = "github:nix-community/home-manager";
 
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
     nur.url = "github:nix-community/nur";
-
-    home-manager = {
-      url = "github:nix-community/home-manager";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, unstable, home-manager, ... }@inputs:
+  outputs = { self, nixpkgs, ... }@inputs:
     let
       forAllSystems = nixpkgs.lib.genAttrs [
         "aarch64-linux"
@@ -27,7 +24,7 @@
       ];
 
       pkgsFor = forAllSystems (system:
-        import unstable {
+        import nixpkgs {
           inherit system;
 
           config = {
@@ -68,24 +65,14 @@
         };
       };
 
+      # Using NixOS module instead of home-manager because `sessionVariables`
+      # won't work otherwise.
       homeConfigurations = {
-        "thomas@throwaway" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor."aarch64-linux";
-          extraSpecialArgs = { inherit inputs; inherit (self) outputs; };
-          modules = [ ./home/thomas/throwaway.nix ];
-        };
-
-        "thomas@odin" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor."aarch64-linux";
-          extraSpecialArgs = { inherit inputs; inherit (self) outputs; };
-          modules = [ ./home/thomas/odin.nix ];
-        };
-
-        "thomas@penguin" = home-manager.lib.homeManagerConfiguration {
-          pkgs = pkgsFor."x86_64-linux";
-          extraSpecialArgs = { inherit inputs; inherit (self) outputs; };
-          modules = [ ./home/thomas/penguin.nix ];
-        };
+        # "thomas@throwaway" = home-manager.lib.homeManagerConfiguration {
+        #   pkgs = pkgsFor."aarch64-linux";
+        #   extraSpecialArgs = { inherit inputs; inherit (self) outputs; };
+        #   modules = [ ./home/thomas/throwaway.nix ];
+        # };
       };
     };
 }

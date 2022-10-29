@@ -14,7 +14,7 @@
     package = pkgs.nixUnstable;
     extraOptions = ''
       auto-optimise-store = true
-      experimental-features = nix-command flakes
+      experimental-features = nix-command flakes repl-flake
       warn-dirty = false
     '';
     gc = {

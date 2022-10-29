@@ -2,23 +2,9 @@
 {
   imports = [
     inputs.nur.hmModules.nur
-    ./features/cli
+    ./nix.nix
+    ../features/cli
   ] ++ (builtins.attrValues outputs.homeManagerModules);
-
-  nixpkgs = {
-    config.allowUnfree = true;
-    overlays = with outputs.overlays; [ ];
-  };
-
-  programs.home-manager.enable = true;
-
-  nix = {
-    package = pkgs.nix;
-    settings = {
-      experimental-features = [ "nix-command" "flakes" ]; # "repl-flake" ];
-      warn-dirty = false;
-    };
-  };
 
   xdg.enable = true;
 
