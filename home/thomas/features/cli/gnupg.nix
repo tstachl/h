@@ -7,10 +7,6 @@ let
   inherit (config.xdg) configHome;
 in
 {
-  home.sessionVariables = {
-    GNUPGHOME = "${configHome}/gnupg";
-  };
-
   programs.gpg = {
     enable = true;
     homedir = "${configHome}/gnupg";

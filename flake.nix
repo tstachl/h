@@ -1,13 +1,14 @@
 {
-  description = "My Device Configuration";
+  description = "my configuration";
 
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.05";
+    unstable.url = "github:nixos/nixpkgs/nixos-unstable";
+    brave.url = "github:tstachl/nixpkgs";
 
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
     nur.url = "github:nix-community/nur";
-    brave.url = "github:tstachl/nixpkgs";
 
     home-manager = {
       url = "github:nix-community/home-manager";
@@ -15,7 +16,7 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, nixos-generators, ... }@inputs:
+  outputs = { self, nixpkgs, unstable, home-manager, ... }@inputs:
     let
       forAllSystems = nixpkgs.lib.genAttrs [
         "aarch64-linux"
@@ -26,7 +27,7 @@
       ];
 
       pkgsFor = forAllSystems (system:
-        import nixpkgs {
+        import unstable {
           inherit system;
 
           config = {

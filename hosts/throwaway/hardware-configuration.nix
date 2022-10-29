@@ -58,6 +58,6 @@ in
     size = 4096;
   }];
 
-  nixpkgs.hostPlatform.system = "aarch64-linux";
+  # nixpkgs.hostPlatform.system = "aarch64-linux";
   networking.useDHCP = lib.mkDefault true;
 }

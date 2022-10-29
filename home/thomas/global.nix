@@ -3,7 +3,6 @@
   imports = [
     inputs.nur.hmModules.nur
     ./features/cli
-    ./features/backup.nix
   ] ++ (builtins.attrValues outputs.homeManagerModules);
 
   nixpkgs = {
