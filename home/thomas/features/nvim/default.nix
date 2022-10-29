@@ -120,7 +120,7 @@
 #         require "core.options"
 #         require "core.keymaps"
 #         require "core.plugins"
-        
+
 #         ${lib.strings.fileContents ./config.lua}
 #         ${lib.strings.fileContents ./lsp.lua}
 #         EOF
