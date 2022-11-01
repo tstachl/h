@@ -97,6 +97,7 @@ if [ "$mount" = true ]; then
   [ ! -d "/mnt/persist" ] && mkdir /mnt/persist
 
   if [ "$zfs" = true ]; then
+    zpool import -d "/dev/disk/by-label/$hostname" "$hostname"
     mount -t zfs "${hostname}/nix" /mnt/nix
     mount -t zfs "${hostname}/persist" /mnt/persist
   else
