@@ -58,6 +58,12 @@
           modules = [ ./hosts/odin ];
         };
 
+        thor = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = { inherit inputs; inherit (self) outputs; };
+          modules = [ ./hosts/thor ];
+        };
+
         penguin = nixpkgs.lib.nixosSystem {
           system = "x86_64-linux";
           specialArgs = { inherit inputs; inherit (self) outputs; };
