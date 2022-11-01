@@ -22,15 +22,15 @@ in
   };
 
   fileSystems = lib.mkDefault {
-    "/boot" = {
-      device = "/dev/disk/by-label/boot";
-      fsType = "vfat";
-    };
-
     "/" = {
       device = "none";
       fsType = "tmpfs";
       options = [ "defaults" "mode=755" ];
+    };
+
+    "/boot" = {
+      device = "/dev/disk/by-label/boot";
+      fsType = "vfat";
     };
 
     "/nix" = {
