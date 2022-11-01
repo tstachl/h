@@ -13,6 +13,7 @@ Usage: $(basename "$0") [options] <device> <hostname>
 Options:
   -c          create partitions
   -m          mount partitions
+  -z          use zfs instead of btrfs
   -h          show usage information
 
 Arguments:
@@ -25,12 +26,14 @@ EOM
 create=false
 #encrypt=false
 mount=false
+zfs=false
 
-while getopts ':ecmh' opt; do
+while getopts ':cmzh' opt; do
   case $opt in
     c) create=true;;
 #    e) encrypt=true;;
     m) mount=true;;
+    z) zfs=true;;
     h) usage;;
     *) ;;
   esac
@@ -62,21 +65,28 @@ if [[ "$create" = true ]]; then
 
   # Formatting Partitions
   #mkfs.btrfs -fL $2 /dev/mapper/$2
-  mkfs.btrfs -fL "$hostname" "${device}1"
   mkfs.fat -F 32 -n boot "${device}2"
 
   # ln -s "${device}1" /dev/mapper/$hostname
 
-  # Mount and Setup BTRFS
-  mount -t btrfs "${device}1" /mnt
+  if [ "$zfs" = true ]; then
+    zpool create -O compress=on -O mountpoint=legacy $hostname "${device}1" -f
+    zfs create -o xattr=off -o atime=off "${hostname}/nix"
+    zfs create -o xattr=off -o atime=off "${hostname}/persist"
+  else
+    mkfs.btrfs -fL "$hostname" "${device}1"
 
-  # Create Subvolumes
-  btrfs subvolume create /mnt/nix
-  btrfs subvolume create /mnt/persist
-  btrfs subvolume create /mnt/swap
+    # Mount and Setup BTRFS
+    mount -t btrfs "${device}1" /mnt
 
-  # BTRFS done
-  umount /mnt
+    # Create Subvolumes
+    btrfs subvolume create /mnt/nix
+    btrfs subvolume create /mnt/persist
+    btrfs subvolume create /mnt/swap
+
+    # BTRFS done
+    umount /mnt
+  fi
 fi
 
 if [ "$mount" = true ]; then
@@ -84,13 +94,18 @@ if [ "$mount" = true ]; then
   mount -t tmpfs -o defaults,mode=755 none /mnt
 
   [ ! -d "/mnt/nix" ] && mkdir /mnt/nix
-  mount -o subvol=nix,compress=zstd,noatime "/dev/disk/by-label/$hostname" /mnt/nix
-
   [ ! -d "/mnt/persist" ] && mkdir /mnt/persist
-  mount -o subvol=persist,compress=zstd,noatime "/dev/disk/by-label/$hostname" /mnt/persist
 
-  [ ! -d "/mnt/swap" ] && mkdir /mnt/swap
-  mount -o subvol=swap,compress=noatime "/dev/disk/by-label/$hostname" /mnt/swap
+  if [ "$zfs" = true ]; then
+    mount -t zfs "${hostname}/nix" /mnt/nix
+    mount -t zfs "${hostname}/persist" /mnt/persist
+  else
+    mount -o subvol=nix,compress=zstd,noatime "/dev/disk/by-label/$hostname" /mnt/nix
+    mount -o subvol=persist,compress=zstd,noatime "/dev/disk/by-label/$hostname" /mnt/persist
+
+    [ ! -d "/mnt/swap" ] && mkdir /mnt/swap
+    mount -o subvol=swap,compress=noatime "/dev/disk/by-label/$hostname" /mnt/swap
+  fi
 
   [ ! -d "/mnt/boot" ] && mkdir /mnt/boot
   mount /dev/disk/by-label/boot /mnt/boot
