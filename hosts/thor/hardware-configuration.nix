@@ -16,6 +16,11 @@ in
 
     kernelModules = [ ];
     extraModulePackages = [ ];
+
+    zfs = {
+      devNods = "/dev/disk/by-path";
+      # extraPools = [ "${hostName}" ];
+    };
   };
 
   fileSystems."/" = {
