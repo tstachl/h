@@ -18,7 +18,7 @@ in
     extraModulePackages = [ ];
 
     zfs = {
-      devNods = "/dev/disk/by-path";
+      devNodes = "/dev/disk/by-path";
       # extraPools = [ "${hostName}" ];
     };
   };
