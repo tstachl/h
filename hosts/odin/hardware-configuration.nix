@@ -21,26 +21,25 @@ in
     extraModulePackages = [ ];
   };
 
-  fileSystems = lib.mkDefault {
-    "/" = {
-      device = "${hostName}";
-      fsType = "zfs";
-    };
+  fileSystems."/" = {
+    device = "none";
+    fsType = "tmpfs";
+    options = [ "defaults" "mode=755" ];
+  };
 
-    "/boot" = {
-      device = "/dev/disk/by-label/boot";
-      fsType = "vfat";
-    };
+  fileSystems."/boot" = {
+    device = "/dev/disk/by-label/boot";
+    fsType = "vfat";
+  };
 
-    "/nix" = {
-      device = "${hostName}/nix";
-      fsType = "zfs";
-    };
+  fileSystems."/nix" = {
+    device = "${hostName}/nix";
+    fsType = "zfs";
+  };
 
-    "/persist" = {
-      device = "${hostName}/persist";
-      fsType = "zfs";
-    };
+  fileSystems."/persist" = {
+    device = "${hostName}/persist";
+    fsType = "zfs";
   };
 
   nixpkgs.hostPlatform.system = "aarch64-linux";
