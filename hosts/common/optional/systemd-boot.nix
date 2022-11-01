@@ -6,6 +6,6 @@
       editor = false;
       consoleMode = "max";
     };
-    timeout = 0;
+    timeout = 5;
   };
 }
