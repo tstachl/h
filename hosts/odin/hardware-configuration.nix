@@ -23,9 +23,8 @@ in
 
   fileSystems = lib.mkDefault {
     "/" = {
-      device = "none";
-      fsType = "tmpfs";
-      options = [ "defaults" "mode=755" ];
+      device = "${hostName}";
+      fsType = "zfs";
     };
 
     "/boot" = {
