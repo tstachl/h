@@ -70,7 +70,7 @@ if [[ "$create" = true ]]; then
   # ln -s "${device}1" /dev/mapper/$hostname
 
   if [ "$zfs" = true ]; then
-    zpool create -O compress=on -O mountpoint=legacy $hostname "${device}1" -f
+    zpool create -O compress=on -O mountpoint=legacy "$hostname" "${device}1" -f
     zfs create -o xattr=off -o atime=off "${hostname}/nix"
     zfs create -o xattr=off -o atime=off "${hostname}/persist"
   else
