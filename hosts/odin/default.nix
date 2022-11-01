@@ -9,8 +9,7 @@
     # ../common/optional/tailscale.nix
   ];
 
-  networking.hostId = "e4498598";
   networking.hostName = "odin";
-  time.timeZone = "America/Santiago";
+  time.timeZone = "Europe/Vienna";
   system.stateVersion = "22.11";
 }
