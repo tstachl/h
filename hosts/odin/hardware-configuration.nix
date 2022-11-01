@@ -40,6 +40,7 @@ in
   fileSystems."/persist" = {
     device = "${hostName}/persist";
     fsType = "zfs";
+    neededForBoot = true;
   };
 
   nixpkgs.hostPlatform.system = "aarch64-linux";
