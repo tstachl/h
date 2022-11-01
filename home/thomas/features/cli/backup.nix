@@ -5,11 +5,11 @@
     backups = {
       thomas = {
         location = {
-          sourceDirectories = [ "/persist/home/thomas" ];
-          repositories = [ "ssh://sj28ra4j@sj28ra4j.repo.borgbase.com/./repo" ];
+          sourceDirectories = [ "/persist" ];
+          repositories = [ "ssh://o193c84l@o193c84l.repo.borgbase.com/./repo" ];
         };
 
-        storage.encryptionPasscommand = "${pkgs.rbw}/bin/rbw get thomas-repo";
+        storage.encryptionPasscommand = "${pkgs.pass}/bin/pass technology/borg";
 
         retention = {
           keepDaily = 7;

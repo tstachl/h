@@ -1,6 +1,7 @@
 {
   imports = [
     ./abduco.nix
+    ./backup.nix
     ./bat.nix
     ./direnv.nix
     ./fish.nix
