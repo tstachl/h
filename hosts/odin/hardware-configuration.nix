@@ -4,40 +4,41 @@ let
 in
 {
   imports = [
-    # complains about the zfs kernel module
-    (modulesPath + "/installer/sd-card/sd-image-aarch64-new-kernel.nix")
-    # breaks on the sun4i-drm module
-    # ../../modules/nixos/sd-image.nix
-    inputs.hardware.nixosModules.raspberry-pi-4
+    (modulesPath + "/profiles/qemu-guest.nix")
+    ../common/optional/fuse.nix
+    ../common/optional/state.nix
+    ../common/optional/systemd-boot.nix
   ];
 
   boot = {
     initrd = {
-      availableKernelModules = [ "xhci_pci" ];
+      supportedFilesystems = [ "zfs" ];
+      availableKernelModules = [ "xhci_pci" "virtio_pci" "usbhid" ];
+      kernelModules = [ ];
     };
-    loader.timeout = 5;
+
+    kernelModules = [ ];
+    extraModulePackages = [ ];
   };
 
   fileSystems = lib.mkDefault {
-    "/boot/firmware" = {
-      device = "/dev/disk/by-label/FIRMWARE";
+    "/boot" = {
+      device = "/dev/disk/by-label/boot";
       fsType = "vfat";
-      options = [ "nofail" "noauto" ];
     };
 
     "/" = {
       device = "none";
       fsType = "tmpfs";
-      options = [ "defaults" "size=2G" "mode=755" ];
+      options = [ "defaults" "mode=755" ];
     };
-  };
 
-  sdImage = {
-    compressImage = false;
-    imageBaseName = "odin";
+    "/nix" = {
+      device = "${hostName}/nix";
+      fsType = "zfs";
+    };
   };
 
   nixpkgs.hostPlatform.system = "aarch64-linux";
   networking.useDHCP = lib.mkDefault true;
-  powerManagement.cpuFreqGovernor = "ondemand";
 }
