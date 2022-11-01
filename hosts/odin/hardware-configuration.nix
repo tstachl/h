@@ -37,6 +37,11 @@ in
       device = "${hostName}/nix";
       fsType = "zfs";
     };
+
+    "/persist" = {
+      device = "${hostName}/persist";
+      fsType = "zfs";
+    };
   };
 
   nixpkgs.hostPlatform.system = "aarch64-linux";
