@@ -12,10 +12,6 @@ in
       thor = {
         hostname = "thor";
         user = "thomas";
-        # remoteForwards = [{
-        #   bind.address = "${homedir}/S.gpg-agent.ssh";
-        #   host.address = "${homedir}/S.gpg-agent.extra";
-        # }];
       };
 
       vault = {
