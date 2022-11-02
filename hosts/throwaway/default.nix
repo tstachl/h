@@ -8,6 +8,7 @@
     ../common/global
     ../common/users/thomas.nix
 
+    ../common/optional/auth-sock.nix
     ../common/optional/gnome.nix
     ../common/optional/nixos.nix
     ../common/optional/pipewire.nix
