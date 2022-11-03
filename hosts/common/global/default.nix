@@ -6,6 +6,7 @@
     ./locale.nix
     ./nix.nix
     ./openssh.nix
+    ./persist.nix
     ./podman.nix
   ];
 

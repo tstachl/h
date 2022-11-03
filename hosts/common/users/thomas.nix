@@ -35,4 +35,15 @@ in
   };
 
   home-manager.users.thomas = import ../../../home/thomas/${hostName}.nix;
+
+  environment.persistence."/persist".users.thomas = {
+    directories = [
+      "Workspace"
+    ];
+
+    files = [
+      ".ssh/known_hosts"
+      ".config/gh/hosts.yml"
+    ];
+  };
 }
