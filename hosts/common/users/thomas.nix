@@ -42,7 +42,6 @@ in
     ];
 
     files = [
-      ".ssh/known_hosts"
       ".config/gh/hosts.yml"
     ];
   };
