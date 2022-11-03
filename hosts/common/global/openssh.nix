@@ -1,4 +1,4 @@
-{ outputs, config, lib, ... }:
+{ outputs, config, lib, pkgs, ... }:
 let
   hosts = builtins.attrNames outputs.nixosConfigurations;
 in
@@ -24,15 +24,11 @@ in
     ];
   };
 
-  programs.ssh = {
-    # Each hosts public key
-    # knownHostsFiles = lib.flatten (map
-    #   (host: [
-    #     ../../${host}/ssh_host_ed25519_key.pub
-    #     ../../${host}/ssh_host_rsa_key.pub
-    #   ])
-    #   hosts);
-  };
+  programs.ssh.knownHostsFiles = [
+    ../../../keys/github.keys
+    ../../../keys/thor.keys
+    ../../../keys/throwaway.keys
+  ];
 
   # Passwordless sudo when SSH'ing with keys
   security.pam.enableSSHAgentAuth = true;

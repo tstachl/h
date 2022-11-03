@@ -52,11 +52,11 @@
           modules = [ ./hosts/throwaway ];
         };
 
-        odin = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
-          specialArgs = { inherit inputs; inherit (self) outputs; };
-          modules = [ ./hosts/odin ];
-        };
+        # odin = nixpkgs.lib.nixosSystem {
+        #   system = "aarch64-linux";
+        #   specialArgs = { inherit inputs; inherit (self) outputs; };
+        #   modules = [ ./hosts/odin ];
+        # };
 
         thor = nixpkgs.lib.nixosSystem {
           system = "aarch64-linux";
@@ -64,11 +64,11 @@
           modules = [ ./hosts/thor ];
         };
 
-        penguin = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
-          specialArgs = { inherit inputs; inherit (self) outputs; };
-          modules = [ ./hosts/penguin ];
-        };
+        # penguin = nixpkgs.lib.nixosSystem {
+        #   system = "x86_64-linux";
+        #   specialArgs = { inherit inputs; inherit (self) outputs; };
+        #   modules = [ ./hosts/penguin ];
+        # };
       };
 
       # Using NixOS module instead of home-manager because `sessionVariables`
