@@ -142,3 +142,16 @@ persisted.
   };
 }
 ```
+
+## Steps after install
+1. if required login to tailscale
+2. if required login to github
+
+## GPG Forward Agent
+1. login to remote server
+2. stop gpg-agent `killall gpg-agent`
+3. exit and re-login to remote server
+
+This should have created the gpg-agent socket folder, it should have removed all
+the sockets from the folder and re-create the default agent socket forwarded.
+
