@@ -1,9 +1,5 @@
-{ config, lib, pkgs, ... }:
-
-with lib;
-
+{ config, pkgs, ... }:
 let
-  inherit (pkgs.stdenv.hostPlatform) isLinux;
   inherit (config.xdg) configHome;
 in
 {
@@ -18,32 +14,5 @@ in
       };
       trust = 5;
     }];
-
-    settings = {
-      no-comments = true;
-      no-emit-version = true;
-      no-symkey-cache = true;
-      default-new-key-algo = "ed25519/cert,sign+cv25519/encr";
-      personal-cipher-preferences = "AES256 CAMELLIA256 AES192 CAMELLIA192 AES CAMELLIA128";
-      personal-compress-preferences = "ZLIB BZIP2 ZIP Uncompressed";
-      personal-digest-preferences = "SHA512 SHA384 SHA256";
-      pinentry-mode = "loopback";
-    };
-
-    scdaemonSettings = {
-      reader-port = "Yubico YubiKey FIDO+CCID";
-      disable-ccid = true;
-    };
-  };
-
-  services.gpg-agent = mkIf isLinux {
-    enable = true;
-    enableBashIntegration = true;
-    enableFishIntegration = true;
-    enableSshSupport = true;
-    pinentryFlavor = "curses";
-    sshKeys = [
-      "0C8022799396573FE31D595B2C4B60B871618D9C"
-    ];
   };
 }

@@ -5,5 +5,6 @@
     ./firefox.nix
     ./fonts.nix
     ./gnome.nix
+    ./gnupg.nix
   ];
 }
