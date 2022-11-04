@@ -7,7 +7,6 @@
     ../common/optional/systemd-boot.nix
     ../common/users/thomas.nix
 
-    ../common/optional/music.nix
     ../common/optional/nixos.nix
     ../common/optional/tailscale.nix
   ];
