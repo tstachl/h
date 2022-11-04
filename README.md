@@ -155,3 +155,12 @@ persisted.
 This should have created the gpg-agent socket folder, it should have removed all
 the sockets from the folder and re-create the default agent socket forwarded.
 
+## Services I want to run
+
+* password manager?
+* syncthing
+* file manager
+* music streaming?
+* video streaming?
+* git repositories
+
