@@ -15,39 +15,34 @@
 
   outputs = { self, nixpkgs, ... }@inputs:
     let
-      forAllSystems = nixpkgs.lib.genAttrs [
-        "aarch64-linux"
-        "aarch64-darwin"
-        "i686-linux"
-        "x86_64-darwin"
-        "x86_64-linux"
-      ];
-
-      pkgsFor = forAllSystems (system:
-        import nixpkgs {
-          inherit system;
-
-          config = {
-            allowUnfree = true;
-            allowUnsupportedSystem = true;
-          };
-        }
-      );
+      inherit (self) outputs;
+      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
+      forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     rec {
       nixosModules = import ./modules/nixos;
       homeManagerModules = import ./modules/home-manager;
+      overlays = import ./overlays;
+
+      legacyPackages = forAllSystems (system:
+        import nixpkgs {
+          inherit system;
+          overlays = with outputs.overlays; [ additions modifications ];
+          config.allowUnfree = true;
+          config.allowUnsupportedSystem = true;
+        }
+      );
 
       packages = forAllSystems (system:
-        import ./pkgs { pkgs = pkgsFor.${system}; }
+        import ./pkgs { pkgs = legacyPackages.${system}; }
       );
       devShells = forAllSystems (system: {
-        default = import ./shell.nix { pkgs = pkgsFor.${system}; };
+        default = import ./shell.nix { pkgs = legacyPackages.${system}; };
       });
 
       nixosConfigurations = {
         throwaway = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
+          pkgs = legacyPackages."aarch64-linux";
           specialArgs = { inherit inputs; inherit (self) outputs; };
           modules = [ ./hosts/throwaway ];
         };
@@ -59,7 +54,7 @@
         # };
 
         thor = nixpkgs.lib.nixosSystem {
-          system = "aarch64-linux";
+          pkgs = legacyPackages."aarch64-linux";
           specialArgs = { inherit inputs; inherit (self) outputs; };
           modules = [ ./hosts/thor ];
         };
