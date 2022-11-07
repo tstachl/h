@@ -1,5 +1,7 @@
 { pkgs, inputs, lib, config, ... }:
 {
+  imports = (builtins.attrValues outputs.nixosModules);
+
   nix = {
     settings = {
       substituters = [

@@ -8,9 +8,8 @@
     ../common/global
     ../common/users/thomas.nix
 
-    ../common/optional/auth-sock.nix
+    ../common/optional/agent-ssh-socket.nix
     ../common/optional/gnome.nix
-    ../common/optional/nixos.nix
     ../common/optional/pipewire.nix
     # ../common/optional/tailscale.nix
     ../common/optional/x11-no-suspend.nix
