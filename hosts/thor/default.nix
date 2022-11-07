@@ -9,6 +9,8 @@
 
     ../common/optional/nixos.nix
     ../common/optional/tailscale.nix
+
+    ../common/services/jellyfin.nix
   ];
 
   networking.hostId = "575e22bc";
