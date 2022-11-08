@@ -10,7 +10,7 @@
     ../common/optional/tailscale.nix
 
     #../common/services/traefik.nix
-    #../common/services/jellyfin.nix
+    ../common/services/jellyfin.nix
     ../common/services/caddy.nix
   ];
 
