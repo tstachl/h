@@ -1,6 +1,7 @@
 { pkgs, ... }:
 {
   imports = [
+    ./agenix.nix
     ./gnupg.nix
     ./home-manager.nix
     ./locale.nix

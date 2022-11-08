@@ -1,4 +1,4 @@
-{ pkgs, inputs, lib, config, ... }:
+{ pkgs, outputs, lib, config, ... }:
 {
   imports = (builtins.attrValues outputs.nixosModules);
 

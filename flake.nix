@@ -3,14 +3,13 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # unstable.url = "github:nixos/nixpkgs/nixos-unstable";
     brave.url = "github:tstachl/nixpkgs";
-
     home-manager.url = "github:nix-community/home-manager";
 
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
     nur.url = "github:nix-community/nur";
+    agenix.url = "github:ryantm/agenix";
   };
 
   outputs = { self, nixpkgs, ... }@inputs:
