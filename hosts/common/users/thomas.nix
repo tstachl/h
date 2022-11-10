@@ -38,7 +38,6 @@ in
 
   environment.persistence."/persist".users.thomas = {
     directories = [
-      "Music"
       "Workspace"
     ];
 

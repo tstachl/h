@@ -7,5 +7,6 @@ let
   systems = [ thor throwaway ];
 in
 {
-  "cloudflare_token.age".publicKeys = [ thomas thor ];
+  "cloudflare-token.age".publicKeys = [ thomas thor ];
+  "wasabi-tokens.age".publicKeys = [ thomas thor ];
 }
