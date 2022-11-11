@@ -13,4 +13,8 @@
       reverse_proxy 127.0.0.1:8096
     '';
   };
+
+  environment.persistence."/persist".directories = [
+    "/var/lib/jellyfin"
+  ];
 }
