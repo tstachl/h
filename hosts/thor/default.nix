@@ -1,4 +1,12 @@
 { lib, config, inputs, ... }:
+let
+  defaultMount = {
+    bucket = "thordata";
+    automount = true;
+    passwd_file = config.age.secrets.wasabi-tokens.path;
+    url = "https://s3.wasabisys.com";
+  };
+in
 {
   imports = [
     ./hardware-configuration.nix
@@ -30,21 +38,8 @@
   services.s3fs = {
     enable = true;
     mounts = {
-      "/mnt/music" = {
-        bucket = "thordata";
-        path = "/music";
-        automount = true;
-        passwd_file = config.age.secrets.wasabi-tokens.path;
-        url = "https://s3.wasabisys.com";
-      };
-
-      "/mnt/books" = {
-        bucket = "thordata";
-        path = "/books";
-        automount = true;
-        passwd_file = config.age.secrets.wasabi-tokens.path;
-        url = "https://s3.wasabisys.com";
-      };
+      "/mnt/music" = defaultMount // { path = "/music"; };
+      "/mnt/books" = defaultMount // { path = "/books"; };
     };
   };
 
