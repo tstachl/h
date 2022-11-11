@@ -37,6 +37,14 @@
         passwd_file = config.age.secrets.wasabi-tokens.path;
         url = "https://s3.wasabisys.com";
       };
+
+      "/mnt/books" = {
+        bucket = "thordata";
+        path = "/books";
+        automount = true;
+        passwd_file = config.age.secrets.wasabi-tokens.path;
+        url = "https://s3.wasabisys.com";
+      };
     };
   };
 
