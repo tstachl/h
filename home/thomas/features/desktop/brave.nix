@@ -1,6 +1,4 @@
-{ inputs, ... }:
+{ pkgs, ... }:
 {
-  home.packages = with inputs.brave; [
-    legacyPackages.aarch64-linux.brave-nightly
-  ];
+  home.packages = with pkgs; [ brave ];
 }

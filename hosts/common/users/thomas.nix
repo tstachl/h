@@ -31,6 +31,7 @@ in
     persistence."/persist".users.thomas = {
       directories = [
         "Workspace"
+        ".config/BraveSoftware"
       ];
 
       files = [
