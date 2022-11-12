@@ -23,7 +23,7 @@ in
     extraModulePackages = [ ];
 
     zfs = {
-      devNodes = "/dev/disk/by-path";
+      devNodes = "/dev/disk/by-label/${hostName}";
     };
   };
 
