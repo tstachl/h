@@ -22,7 +22,7 @@
       [ gnome-settings-daemon ];
 
     # gnome crypto services and tools package
-    dbus.packages = [ pkgs.dconf pkgs.gcr ];
+    # dbus.packages = [ pkgs.dconf pkgs.gcr ];
   };
 
   # Remove bloat from Gnome
