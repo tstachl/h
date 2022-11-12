@@ -6,7 +6,7 @@ in
   imports = [
     inputs.hardware.nixosModules.common-cpu-intel
     inputs.hardware.nixosModules.common-gpu-intel
-    inputs.hardware.nixosModules.common-pc-laptop
+    # inputs.hardware.nixosModules.common-pc-laptop
 
     ../common/optional/systemd-boot.nix
     ../common/optional/fuse.nix
