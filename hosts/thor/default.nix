@@ -43,6 +43,10 @@ in
     };
   };
 
+  networking.firewall.interfaces.tailscale0.allowedTCPPortRanges = [
+    { from = 0; to = 65535; }
+  ];
+
   networking.hostId = "575e22bc";
   networking.hostName = "thor";
   time.timeZone = "America/Santiago";
