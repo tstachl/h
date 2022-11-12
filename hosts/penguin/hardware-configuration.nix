@@ -50,7 +50,7 @@ in
   };
 
   nixpkgs.hostPlatform.system = "x86_64-linux";
-  networking.useDHCP = true;
+  networking.useDHCP = lib.mkDefault true;
   powerManagement.cpuFreqGovernor = "powersave";
   # hardware.cpu.intel.updateMicrocode = config.hardware.enableRedistributableFirmware;
   # hardware.video.hidpi.enable = true;

@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    brave.url = "github:tstachl/nixpkgs";
     home-manager.url = "github:nix-community/home-manager";
 
     hardware.url = "github:nixos/nixos-hardware";
