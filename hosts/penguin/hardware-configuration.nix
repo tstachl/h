@@ -4,9 +4,8 @@ let
 in
 {
   imports = [
-    # inputs.hardware.nixosModules.common-cpu-intel
-    # inputs.hardware.nixosModules.common-gpu-intel
-    # inputs.hardware.nixosModules.common-pc-laptop
+    inputs.hardware.nixosModules.common-cpu-intel
+    inputs.hardware.nixosModules.common-pc-laptop
 
     ../common/optional/systemd-boot.nix
     ../common/optional/fuse.nix
@@ -52,7 +51,7 @@ in
   nixpkgs.hostPlatform.system = "x86_64-linux";
   networking.useDHCP = lib.mkDefault true;
   powerManagement.cpuFreqGovernor = "powersave";
-  # hardware.cpu.intel.updateMicrocode = config.hardware.enableRedistributableFirmware;
-  # hardware.video.hidpi.enable = true;
-  # hardware.opengl.enable = true;
+  hardware.enableRedistributableFirmware = true;
+  hardware.video.hidpi.enable = true;
+  hardware.opengl.enable = true;
 }
