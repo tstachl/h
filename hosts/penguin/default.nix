@@ -13,7 +13,7 @@
     ../common/optional/yubikey.nix
   ];
 
-  networking.hostId = "24f7ca5f6";
+  networking.hostId = "24f7ca5f";
   networking.hostName = "penguin";
   time.timeZone = "America/Los_Angeles";
   system.stateVersion = "22.11";
