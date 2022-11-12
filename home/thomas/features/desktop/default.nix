@@ -4,7 +4,7 @@
     ./brave.nix
     ./firefox.nix
     ./fonts.nix
-    # ./gnome.nix
+    ./gnome.nix
     ./gnupg.nix
   ];
 }
