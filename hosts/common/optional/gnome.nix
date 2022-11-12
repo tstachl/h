@@ -25,6 +25,8 @@
     dbus.packages = [ pkgs.dconf pkgs.gcr ];
   };
 
+  programs.dconf.enable = true;
+
   # Remove bloat from Gnome
   environment.gnome.excludePackages = (with pkgs; [
     # gnome-console
