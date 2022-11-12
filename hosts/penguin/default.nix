@@ -11,6 +11,7 @@
     ../common/optional/pipewire.nix
     ../common/optional/tailscale.nix
     ../common/optional/x11-no-suspend.nix
+    # ../common/optional/xserver.nix
     ../common/optional/yubikey.nix
   ];
 

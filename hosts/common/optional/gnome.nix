@@ -1,31 +1,19 @@
 { pkgs, ... }:
 {
+  programs.dconf.enable = true;
+
   services = {
     xserver = {
       enable = true;
       layout = "us";
 
-      desktopManager.gnome = {
-        enable = true;
-      };
-
-      displayManager.gdm = {
-        enable = true;
-        autoSuspend = false;
-      };
+      desktopManager.gnome.enable = true;
+      displayManager.gdm.enable = true;
     };
 
-    geoclue2.enable = true;
+    # geoclue2.enable = true;
     gnome.games.enable = false;
-
-    udev.packages = with pkgs.gnome;
-      [ gnome-settings-daemon ];
-
-    # gnome crypto services and tools package
-    dbus.packages = [ pkgs.dconf pkgs.gcr ];
   };
-
-  programs.dconf.enable = true;
 
   # Remove bloat from Gnome
   environment.gnome.excludePackages = (with pkgs; [

@@ -39,15 +39,15 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1667981810,
-        "narHash": "sha256-p27zd5M+OkfND46gzbGkaHlNBZsYe95M48OJuFeuuSY=",
-        "owner": "nix-community",
+        "lastModified": 1668070287,
+        "narHash": "sha256-7TVbG1Ziu9fIs3NBDYk1rzCJKoD0TWb/O1GIoxU6UxQ=",
+        "owner": "nickcao",
         "repo": "home-manager",
-        "rev": "6ce3493a3c5c6a8f4cfa6f5f88723272e0cfd335",
+        "rev": "8e09277cb0e13d21437b9c46530a7adbcc391831",
         "type": "github"
       },
       "original": {
-        "owner": "nix-community",
+        "owner": "nickcao",
         "repo": "home-manager",
         "type": "github"
       }
