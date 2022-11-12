@@ -2,6 +2,7 @@
 {
   imports = [
     ./agenix.nix
+    ./fish.nix
     ./gnupg.nix
     ./home-manager.nix
     ./locale.nix

@@ -5,6 +5,7 @@ in
 {
   imports = [
     (modulesPath + "/profiles/qemu-guest.nix")
+    ../common/optional/fuse.nix
   ];
 
   boot = {
@@ -19,7 +20,6 @@ in
 
     zfs = {
       devNodes = "/dev/disk/by-path";
-      # extraPools = [ "${hostName}" ];
     };
   };
 

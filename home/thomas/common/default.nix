@@ -2,9 +2,15 @@
 {
   imports = [
     inputs.nur.hmModules.nur
-    ./nix.nix
-    ../features/cli
   ] ++ (builtins.attrValues outputs.homeManagerModules);
+
+  nix = {
+    package = pkgs.nix;
+    settings = {
+      experimental-features = [ "nix-command" "flakes" "repl-flake" ];
+      warn-dirty = false;
+    };
+  };
 
   xdg.enable = true;
   programs.home-manager.enable = true;

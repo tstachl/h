@@ -5,19 +5,10 @@ let
   ifExists = groups: builtins.filter (
     group: builtins.hasAttr group config.users.groups
   ) groups;
+
+  hasPersistence = builtins.hasAttr "persistence" config.environment;
 in
 {
-  # TODO: currently only using fish with thomas user
-  # maybe I should just move fish into the home-manager config
-  programs.fish = {
-    enable = true;
-    vendor = {
-      completions.enable = true;
-      config.enable = true;
-      functions.enable = true;
-    };
-  };
-
   users.mutableUsers = false;
   users.users.thomas = {
     isNormalUser = true;
@@ -36,13 +27,15 @@ in
 
   home-manager.users.thomas = import ../../../home/thomas/${hostName}.nix;
 
-  environment.persistence."/persist".users.thomas = {
-    directories = [
-      "Workspace"
-    ];
+  environment = lib.mkIf hasPersistence {
+    persistence."/persist".users.thomas = {
+      directories = [
+        "Workspace"
+      ];
 
-    files = [
-      ".config/gh/hosts.yml"
-    ];
+      files = [
+        ".config/gh/hosts.yml"
+      ];
+    };
   };
 }

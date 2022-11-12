@@ -1,7 +1,8 @@
 {
   imports = [
-    ./global
-    ./features/nvim
+    ./common
+    ./features/cli
     ./features/cli/spotdl.nix
+    ./features/nvim
   ];
 }

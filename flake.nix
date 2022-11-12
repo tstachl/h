@@ -58,21 +58,11 @@
           modules = [ ./hosts/thor ];
         };
 
-        # penguin = nixpkgs.lib.nixosSystem {
-        #   system = "x86_64-linux";
-        #   specialArgs = { inherit inputs; inherit (self) outputs; };
-        #   modules = [ ./hosts/penguin ];
-        # };
-      };
-
-      # Using NixOS module instead of home-manager because `sessionVariables`
-      # won't work otherwise.
-      homeConfigurations = {
-        # "thomas@throwaway" = home-manager.lib.homeManagerConfiguration {
-        #   pkgs = pkgsFor."aarch64-linux";
-        #   extraSpecialArgs = { inherit inputs; inherit (self) outputs; };
-        #   modules = [ ./home/thomas/throwaway.nix ];
-        # };
+        penguin = nixpkgs.lib.nixosSystem {
+          system = "x86_64-linux";
+          specialArgs = { inherit inputs; inherit (self) outputs; };
+          modules = [ ./hosts/penguin ];
+        };
       };
     };
 }

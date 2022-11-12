@@ -20,19 +20,13 @@
     hideMounts = true;
 
     directories = [
-      "/var/log"
       "/var/lib/bluetooth"
-      "/var/lib/systemd/coredump"
       "/etc/NetworkManager/system-connections"
-    ];
-
-    files = [
-      "/etc/machine-id"
     ];
 
     users.thomas = {
       directories = [
-        "Workspace"
+       "Workspace"
         { directory = ".config/BraveSoftware/"; mode = "0700"; }
       ];
 
