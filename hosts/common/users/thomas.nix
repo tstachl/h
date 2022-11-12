@@ -32,10 +32,10 @@ in
       directories = [
         "Workspace"
         ".config/BraveSoftware"
-        ".config/monitors.xml"
       ];
 
       files = [
+        ".config/monitors.xml"
         ".config/gh/hosts.yml"
       ];
     };
