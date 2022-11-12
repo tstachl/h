@@ -20,11 +20,9 @@
 
     udev.packages = with pkgs.gnome;
       [ gnome-settings-daemon ];
-    
+
     # gnome crypto services and tools package
     dbus.packages = [ pkgs.dconf pkgs.gcr ];
-    
-    avahi.enable = true;
   };
 
   # Remove bloat from Gnome
