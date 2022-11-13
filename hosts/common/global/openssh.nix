@@ -27,7 +27,8 @@ in
   programs.ssh.knownHostsFiles = [
     ../../../keys/github.keys
     ../../../keys/thor.keys
-    ../../../keys/throwaway.keys
+    ../../../keys/penguin.keys
+    ../../../keys/vault.keys
   ];
 
   # Passwordless sudo when SSH'ing with keys

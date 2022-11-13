@@ -31,7 +31,7 @@
     };
 
     "org/gnome/desktop/peripherals/mouse" = {
-      natural-scroll = true;
+      natural-scroll = false;
       accel-profile = "flat";
     };
 
