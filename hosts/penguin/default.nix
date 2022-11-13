@@ -15,6 +15,13 @@
     ../common/optional/yubikey.nix
   ];
 
+  environment.persistence."/persist" = {
+    directories = [
+      "/var/lib/bluetooth"
+      "/etc/NetworkManager/system-connections"
+    ];
+  };
+
   networking.hostId = "24f7ca5f";
   networking.hostName = "penguin";
   time.timeZone = "America/Los_Angeles";
