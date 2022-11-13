@@ -1,6 +1,8 @@
 { pkgs, ... }:
 {
   home.packages = (with pkgs; [
+    bluez
+    gnome43Extensions."bluetooth-quick-connect@bjarosze.gmail.com"
     gnome43Extensions."material-shell@papyelgringo"
   ]);
 
@@ -27,12 +29,22 @@
     };
 
     "org/gnome/shell" = {
-      enabled-extensions = [ "material-shell@papyelgringo" ];
+      enabled-extensions = [
+        "material-shell@papyelgringo"
+        "bluetooth-quick-connect@bjarosze.gmail.com"
+      ];
     };
 
     "org/gnome/desktop/peripherals/mouse" = {
       natural-scroll = false;
       accel-profile = "flat";
+    };
+
+    "org/gnome/shell/extensions/bluetooth-quick-connect" = {
+      bluetooth-auto-power-off = true;
+      bluetooth-auto-power-on = true;
+      refresh-button-on = true;
+      show-battery-value-on = true;
     };
 
     # disable <Super>l => lock
