@@ -40,12 +40,6 @@
       });
 
       nixosConfigurations = {
-        throwaway = nixpkgs.lib.nixosSystem {
-          pkgs = legacyPackages."aarch64-linux";
-          specialArgs = { inherit inputs; inherit (self) outputs; };
-          modules = [ ./hosts/throwaway ];
-        };
-
         # odin = nixpkgs.lib.nixosSystem {
         #   system = "aarch64-linux";
         #   specialArgs = { inherit inputs; inherit (self) outputs; };
