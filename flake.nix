@@ -59,7 +59,7 @@
         };
 
         penguin = nixpkgs.lib.nixosSystem {
-          system = "x86_64-linux";
+          pkgs = legacyPackages."x86_64-linux";
           specialArgs = { inherit inputs; inherit (self) outputs; };
           modules = [ ./hosts/penguin ];
         };
