@@ -30,6 +30,11 @@ in
   environment = lib.mkIf hasPersistence {
     persistence."/persist".users.thomas = {
       directories = [
+        "Desktop"
+        "Documents"
+        "Music"
+        "Pictures"
+        "Videos"
         "Workspace"
         ".config/BraveSoftware"
       ];
