@@ -134,7 +134,7 @@
   };
 
   home.packages = with pkgs; [
-    git-crypt
+    git-crypt git-annex
   ];
 }
 
