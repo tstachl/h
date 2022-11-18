@@ -37,6 +37,9 @@ in
         "Videos"
         "Workspace"
         ".config/BraveSoftware"
+        # for podman
+        ".config/share/containers"
+        ".local/share/containers"
       ];
 
       files = [

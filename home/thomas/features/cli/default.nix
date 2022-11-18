@@ -12,6 +12,7 @@
     ./pass.nix
     ./rbw.nix
     ./ripgrep.nix
+    ./spotdl.nix
     ./ssh.nix
     ./starship.nix
   ];
