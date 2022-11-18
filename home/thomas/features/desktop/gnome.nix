@@ -7,6 +7,10 @@
   ]);
 
   dconf.settings = {
+    "org/gnome/mutter" = {
+      experimental-features = [ "scale-monitor-framebuffer" ];
+    };
+
     "org/gnome/desktop/background" = {
       color-shading-type = "solid";
       picture-options = "zoom";
@@ -54,7 +58,7 @@
 
     "org/gnome/shell/extensions/materialshell/layouts" = {
       default-layout = "half";
-      gap = 25;
+      gap = 8;
       ratio = true;
     };
 
