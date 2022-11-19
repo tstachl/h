@@ -1,3 +1,7 @@
+{ lib, config, ... }:
+let
+  hasPersistence = builtins.hasAttr "persistence" config.environment;
+in
 {
   services.caddy = {
     enable = true;
@@ -13,5 +17,11 @@
 
   networking.firewall.interfaces.tailscale0 = {
     allowedTCPPorts = [ 80 443 ];
+  };
+
+  environment = lib.mkIf hasPersistence {
+    persistence."/persist".directories = [
+      "/var/lib/caddy"
+    ];
   };
 }

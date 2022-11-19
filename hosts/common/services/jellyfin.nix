@@ -1,4 +1,7 @@
-{ ... }:
+{ lib, config, ... }:
+let
+  hasPersistence = builtins.hasAttr "persistence" config.environment;
+in
 {
   services.jellyfin = {
     enable = true;
@@ -14,7 +17,9 @@
     '';
   };
 
-  environment.persistence."/persist".directories = [
-    "/var/lib/jellyfin"
-  ];
+  environment = lib.mkIf hasPersistence {
+    persistence."/persist".directories = [
+      "/var/lib/jellyfin"
+    ];
+  };
 }
