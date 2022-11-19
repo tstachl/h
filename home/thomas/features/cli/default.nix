@@ -1,6 +1,6 @@
 {
   imports = [
-    ./abduco.nix
+    # ./abduco.nix
     # ./backup.nix
     ./bat.nix
     ./direnv.nix
