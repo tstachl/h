@@ -17,8 +17,9 @@ in
 
     ../common/optional/tailscale.nix
 
-    ../common/services/jellyfin.nix
     ../common/services/caddy.nix
+    ../common/services/gitolite.nix
+    ../common/services/jellyfin.nix
   ];
 
   # Caddy Service Secret
