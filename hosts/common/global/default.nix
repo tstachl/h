@@ -3,6 +3,7 @@
   imports = [
     ./agenix.nix
     ./fish.nix
+    ./git.nix
     ./gnupg.nix
     ./home-manager.nix
     ./locale.nix
@@ -10,6 +11,7 @@
     ./openssh.nix
     ./persist.nix
     ./podman.nix
+    ./spotdl.nix
   ];
 
   environment = {
@@ -18,7 +20,7 @@
 
     # add important packages
     systemPackages = with pkgs; [
-      git parted
+      ripgrep jq parted
     ];
   };
 }

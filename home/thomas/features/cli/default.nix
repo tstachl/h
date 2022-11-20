@@ -8,11 +8,8 @@
     ./git.nix
     ./github.nix
     ./gnupg.nix
-    ./jq.nix
-    ./pass.nix
-    ./rbw.nix
-    ./ripgrep.nix
-    ./spotdl.nix
+    # ./pass.nix
+    # ./rbw.nix
     ./ssh.nix
     ./starship.nix
   ];

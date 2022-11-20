@@ -8,8 +8,10 @@
           -v $(pwd):/music \
           spotdl/spotify-downloader \
           --save-file=".spotdl" \
-          --format="flac" \
-          --output="{artist}/{album} ({year})/{track-number} - {title}" \
+          --format="ogg" \
+          --bitrate="320k" \
+          --output="{artist}/{album}/{track-number} - {title}" \
+          $argv
       end
     '';
   };
