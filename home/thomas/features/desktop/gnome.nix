@@ -45,7 +45,7 @@
     };
 
     "org/gnome/shell/extensions/bluetooth-quick-connect" = {
-      bluetooth-auto-power-off = true;
+      bluetooth-auto-power-off = false;
       bluetooth-auto-power-on = true;
       refresh-button-on = true;
       show-battery-value-on = true;
