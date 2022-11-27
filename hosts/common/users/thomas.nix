@@ -30,6 +30,7 @@ in
   environment = lib.mkIf hasPersistence {
     persistence."/persist".users.thomas = {
       directories = [
+        "Audiobooks"
         "Desktop"
         "Documents"
         "Music"
