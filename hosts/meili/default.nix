@@ -1,30 +1,28 @@
 { lib, config, inputs, ... }:
+let
+  hasPersistence = builtins.hasAttr "persistence" config.environment;
+in
 {
   imports = [
-    ./hardware-configuration.nix
-
     ../common/global
-    ../common/global/nixos
+    ../common/global/darwin
+
     ../common/users/thomas.nix
 
     ../common/optional/agent-ssh-socket.nix
-    ../common/optional/gnome.nix
-    ../common/optional/pipewire.nix
     ../common/optional/tailscale.nix
-    ../common/optional/x11-no-suspend.nix
     ../common/optional/yubikey.nix
   ];
 
-  environment.persistence."/persist" = {
-    directories = [
+  environment = lib.mkIf hasPersistence {
+    persistence."/persist".directories = [
       "/etc/NetworkManager/system-connections"
       "/var/lib/bluetooth"
       "/var/lib/yubico"
     ];
   };
 
-  networking.hostId = "24f7ca5f";
-  networking.hostName = "penguin";
+  networking.hostName = "meili";
   time.timeZone = "America/Los_Angeles";
   system.stateVersion = "22.11";
 }

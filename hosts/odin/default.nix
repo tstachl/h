@@ -3,6 +3,7 @@
     ./hardware-configuration.nix
 
     ../common/global
+    ../common/global/nixos
     ../common/users/thomas.nix
 
     ../common/optional/nixos.nix

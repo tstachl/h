@@ -4,6 +4,7 @@ with lib;
 
 let
   inherit (pkgs.stdenv.hostPlatform) isLinux;
+  hasPersistence = builtins.hasAttr "persistence" config.environment;
 in
 {
   services.tailscale.enable = true;
@@ -16,8 +17,8 @@ in
     sysctl."net.ipv6.conf.all.forwarding" = 1;
   };
 
-  environment.persistence."/persist" = {
-    directories = [
+  environment = lib.mkIf hasPersistence {
+    persistence."/persist".directories = [
       "/var/lib/tailscale"
     ];
   };

@@ -12,6 +12,7 @@ in
     ./hardware-configuration.nix
 
     ../common/global
+    ../common/global/nixos
     ../common/optional/systemd-boot.nix
     ../common/users/thomas.nix
 

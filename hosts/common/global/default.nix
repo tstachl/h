@@ -1,15 +1,12 @@
 { pkgs, ... }:
 {
   imports = [
-    ./agenix.nix
     ./fish.nix
     ./git.nix
     ./gnupg.nix
-    ./home-manager.nix
     ./locale.nix
     ./nix.nix
     ./openssh.nix
-    ./persist.nix
     ./podman.nix
     ./spotdl.nix
   ];

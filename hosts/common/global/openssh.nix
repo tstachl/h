@@ -1,7 +1,4 @@
 { outputs, config, lib, pkgs, ... }:
-let
-  hosts = builtins.attrNames outputs.nixosConfigurations;
-in
 {
   services.openssh = {
     enable = true;

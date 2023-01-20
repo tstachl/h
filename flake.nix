@@ -3,8 +3,9 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-    # home-manager.url = "github:nix-community/home-manager";
-    home-manager.url = "github:nickcao/home-manager";
+    darwin.url = "github:lnl7/nix-darwin/master";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+    home-manager.url = "github:nix-community/home-manager";
 
     hardware.url = "github:nixos/nixos-hardware";
     impermanence.url = "github:nix-community/impermanence";
@@ -12,15 +13,17 @@
     agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = { self, nixpkgs, ... }@inputs:
+  outputs = { self, nixpkgs, darwin, ... }@inputs:
     let
       inherit (self) outputs;
-      supportedSystems = [ "x86_64-linux" "aarch64-linux" ];
+      supportedSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
       forAllSystems = nixpkgs.lib.genAttrs supportedSystems;
     in
     rec {
       nixosModules = import ./modules/nixos;
+      darwinModules = import ./modules/darwin;
       homeManagerModules = import ./modules/home-manager;
+      
       overlays = import ./overlays;
 
       legacyPackages = forAllSystems (system:
@@ -40,22 +43,32 @@
       });
 
       nixosConfigurations = {
+        # Raspberry Pi in Austria
         # odin = nixpkgs.lib.nixosSystem {
         #   system = "aarch64-linux";
         #   specialArgs = { inherit inputs; inherit (self) outputs; };
         #   modules = [ ./hosts/odin ];
         # };
-
+        
+        # VPS in Chile
         thor = nixpkgs.lib.nixosSystem {
           pkgs = legacyPackages."aarch64-linux";
           specialArgs = { inherit inputs; inherit (self) outputs; };
           modules = [ ./hosts/thor ];
         };
 
-        penguin = nixpkgs.lib.nixosSystem {
-          pkgs = legacyPackages."x86_64-linux";
+        # penguin = nixpkgs.lib.nixosSystem {
+        #   pkgs = legacyPackages."x86_64-linux";
+        #   specialArgs = { inherit inputs; inherit (self) outputs; };
+        #   modules = [ ./hosts/penguin ];
+        # };
+      };
+
+      darwinConfigurations = {
+        meili = darwin.lib.darwinSystem {
+          system = "aarch64-darwin";
           specialArgs = { inherit inputs; inherit (self) outputs; };
-          modules = [ ./hosts/penguin ];
+          modules = [ ./hosts/meili ];
         };
       };
     };
