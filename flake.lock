@@ -18,6 +18,27 @@
         "type": "github"
       }
     },
+    "darwin": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1673295039,
+        "narHash": "sha256-AsdYgE8/GPwcelGgrntlijMg4t3hLFJFCRF3tL5WVjA=",
+        "owner": "lnl7",
+        "repo": "nix-darwin",
+        "rev": "87b9d090ad39b25b2400029c64825fc2a8868943",
+        "type": "github"
+      },
+      "original": {
+        "owner": "lnl7",
+        "ref": "master",
+        "repo": "nix-darwin",
+        "type": "github"
+      }
+    },
     "hardware": {
       "locked": {
         "lastModified": 1668157555,
@@ -39,15 +60,15 @@
         "utils": "utils"
       },
       "locked": {
-        "lastModified": 1668070287,
-        "narHash": "sha256-7TVbG1Ziu9fIs3NBDYk1rzCJKoD0TWb/O1GIoxU6UxQ=",
-        "owner": "nickcao",
+        "lastModified": 1674771519,
+        "narHash": "sha256-U0W3S1nX6yEvLh3Vq70EORbmXecAKXfmEfCfaA4A+I8=",
+        "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8e09277cb0e13d21437b9c46530a7adbcc391831",
+        "rev": "bb4b25b302dbf0f527f190461b080b5262871756",
         "type": "github"
       },
       "original": {
-        "owner": "nickcao",
+        "owner": "nix-community",
         "repo": "home-manager",
         "type": "github"
       }
@@ -133,6 +154,7 @@
     "root": {
       "inputs": {
         "agenix": "agenix",
+        "darwin": "darwin",
         "hardware": "hardware",
         "home-manager": "home-manager",
         "impermanence": "impermanence",

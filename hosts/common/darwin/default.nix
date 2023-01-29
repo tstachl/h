@@ -1,12 +1,10 @@
 { pkgs, ... }:
 {
   imports = [
-    ../common
+    ../default.nix
     ./desktop.nix
     ./home-manager.nix
     ./homebrew.nix
     ./podman.nix
   ];
-
-  environment.gnome.enable = true;
 }

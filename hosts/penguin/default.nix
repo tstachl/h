@@ -3,16 +3,13 @@
   imports = [
     ./hardware-configuration.nix
 
-    ../common/global
-    ../common/global/nixos
+    ../common/nixos
     ../common/users/thomas.nix
 
-    ../common/optional/agent-ssh-socket.nix
-    ../common/optional/gnome.nix
-    ../common/optional/pipewire.nix
-    ../common/optional/tailscale.nix
-    ../common/optional/x11-no-suspend.nix
-    ../common/optional/yubikey.nix
+    ../common/nixos/gnome.nix
+    ../common/nixos/pipewire.nix
+    ../common/nixos/x11-no-suspend.nix
+    ../common/nixos/yubikey.nix
   ];
 
   environment.persistence."/persist" = {

@@ -11,12 +11,9 @@ in
   imports = [
     ./hardware-configuration.nix
 
-    ../common/global
-    ../common/global/nixos
-    ../common/optional/systemd-boot.nix
+    ../_/nixos
+    ../_/nixos/systemd-boot.nix
     ../common/users/thomas.nix
-
-    ../common/optional/tailscale.nix
 
     ../common/services/caddy.nix
     ../common/services/gitolite.nix

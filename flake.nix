@@ -13,7 +13,7 @@
     agenix.url = "github:ryantm/agenix";
   };
 
-  outputs = { self, nixpkgs, darwin, ... }@inputs:
+  outputs = { self, nixpkgs, darwin, home-manager, ... }@inputs:
     let
       inherit (self) outputs;
       supportedSystems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" ];
@@ -69,6 +69,14 @@
           system = "aarch64-darwin";
           specialArgs = { inherit inputs; inherit (self) outputs; };
           modules = [ ./hosts/meili ];
+        };
+      };
+
+      homeConfigurations = {
+        "thomas@meili" = home-manager.lib.homeManagerConfiguration {
+          pkgs = legacyPackages."aarch64-darwin";
+          extraSpecialArgs = { inherit inputs; inherit (self) outputs; };
+          modules = [ ./home/thomas/meili.nix ];
         };
       };
     };

@@ -1,15 +1,18 @@
-{ pkgs, ... }:
+{ pkgs, outputs, ... }:
 {
   imports = [
-    ./fish.nix
-    ./git.nix
-    ./gnupg.nix
+    ../default.nix
+    ./agenix.nix
+    ./home-manager.nix
     ./locale.nix
-    ./nix.nix
     ./openssh.nix
+    ./persist.nix
     ./podman.nix
-    ./spotdl.nix
+    ./tailscale.nix
   ];
+
+  imports = (builtins.attrValues outputs.nixosModules);
+  nix.gc.dates = "weekly";
 
   environment = {
     # add terminfo files
@@ -17,7 +20,7 @@
 
     # add important packages
     systemPackages = with pkgs; [
-      ripgrep jq parted
+      parted
     ];
   };
 }
