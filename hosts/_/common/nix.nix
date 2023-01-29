@@ -1,7 +1,5 @@
-{ pkgs, outputs, lib, config, ... }:
+{ pkgs, lib, config, ... }:
 {
-  # imports = (builtins.attrValues outputs.nixosModules);
-
   nix = {
     settings = {
       substituters = [
@@ -21,7 +19,6 @@
     '';
     gc = {
       automatic = true;
-      dates = "weekly";
       options = "--delete-older-than 7d";
     };
 
