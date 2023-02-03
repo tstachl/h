@@ -15,4 +15,5 @@
   '';
   manual.manpages.enable = false;
   home.homeDirectory = "/Users/thomas";
+  home.sessionVariables = { SHELL = pkgs.fish + "/bin/fish"; };
 }

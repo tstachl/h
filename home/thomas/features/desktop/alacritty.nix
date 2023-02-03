@@ -71,7 +71,7 @@
       };
 
       window = {
-        decorations = "None";
+        #decorations = "None";
         padding = {
           x = 12;
           y = 12;
