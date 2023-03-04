@@ -8,7 +8,11 @@
   programs.nix-index.enable = true;
 
   system.keyboard.enableKeyMapping = true;
-  system.keyboard.remapCapsLockToEscape = true;
+
+  system.keyboard.userKeyMapping = [{
+    HIDKeyboardModifierMappingSrc = 30064771129;
+    HIDKeyboardModifierMappingDst = 30064771298;
+  }];
 
   system.defaults = {
     dock = {
@@ -47,6 +51,7 @@
   home-manager.users.thomas = import ../../home/thomas/meili.nix;
 
   networking.hostName = "meili";
-  time.timeZone = "America/Los_Angeles";
+  networking.remoteLogin = true;
+  time.timeZone = "America/Lima";
   system.stateVersion = 4;
 }

@@ -1,10 +1,9 @@
-{ pkgs, ... }:
+{ pkgs, outputs, ... }:
 {
   imports = [
     ../default.nix
     ./desktop.nix
     ./home-manager.nix
     ./homebrew.nix
-    ./podman.nix
-  ];
+  ] ++ (builtins.attrValues outputs.darwinModules);
 }
