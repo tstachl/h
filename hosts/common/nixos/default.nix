@@ -9,9 +9,8 @@
     ./persist.nix
     ./podman.nix
     ./tailscale.nix
-  ];
+  ] ++ (builtins.attrValues outputs.nixosModules);
 
-  imports = (builtins.attrValues outputs.nixosModules);
   nix.gc.dates = "weekly";
 
   environment = {

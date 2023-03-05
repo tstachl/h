@@ -1,8 +1,6 @@
 { pkgs, ... }:
 {
   environment.systemPackages = with pkgs; [
-    podman
+    utm
   ];
-
-  # homebrew.brews = [ "podman-desktop" ];
 }

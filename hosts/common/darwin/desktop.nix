@@ -1,7 +1,12 @@
-{ ... }:
+{ pkgs, ... }:
 {
+  environment.systemPackages = with pkgs; [
+    yabai skhd
+  ];
+
   services.yabai = {
     enable = true;
+    enableScriptingAddition = true;
     config = {
       focus_follows_mouse = "off";
       mouse_follows_focus = "off";
@@ -117,10 +122,6 @@
 
       # fast focus desktop
       alt - tab : yabai -m space --focus recent
-
-      # send window to monitor and follow focus
-      shift + alt - n : yabai -m window --display next; yabai -m display --focus next
-      shift + alt - p : yabai -m window --display previous; yabai -m display --focus previous
     '';
   };
 
