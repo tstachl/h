@@ -23,7 +23,7 @@
       nixosModules = import ./modules/nixos;
       darwinModules = import ./modules/darwin;
       homeManagerModules = import ./modules/home-manager;
-      
+
       overlays = import ./overlays;
 
       legacyPackages = forAllSystems (system:
@@ -49,7 +49,7 @@
         #   specialArgs = { inherit inputs; inherit (self) outputs; };
         #   modules = [ ./hosts/odin ];
         # };
-        
+
         # VPS in Chile
         thor = nixpkgs.lib.nixosSystem {
           pkgs = legacyPackages."aarch64-linux";
@@ -62,13 +62,26 @@
         #   specialArgs = { inherit inputs; inherit (self) outputs; };
         #   modules = [ ./hosts/penguin ];
         # };
+
+        # odin = nixpkgs.lib.nixosSystem {
+        #   pkgs = legacyPackages."aarch64-linux";
+        #   specialArgs = { inherit inputs; inherit (self) outputs; };
+        #   modules = [
+        #     ./hosts/odin    # configuration for the host itself
+        #     ./services/git  # user configuration for git server
+        #     ./users/thomas  # user configuration for thomas
+        #   ];
+        # };
       };
 
       darwinConfigurations = {
         meili = darwin.lib.darwinSystem {
           system = "aarch64-darwin";
           specialArgs = { inherit inputs; inherit (self) outputs; };
-          modules = [ ./hosts/meili ];
+          modules = [
+            ./hosts/meili
+
+          ];
         };
       };
 
