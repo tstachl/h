@@ -39,6 +39,8 @@
     };
   };
 
+  system.rosetta.enable = true;
+
   # Add ability to used TouchID for sudo authentication
   # Also not allowed on work computer?
   security.pam.enableSudoTouchIdAuth = true;
