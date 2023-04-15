@@ -9,6 +9,7 @@
       (
         nvim-treesitter.withPlugins (
           plugins: with pkgs.tree-sitter-grammars; [
+            # tree-sitter-astro TODO: need to add
             tree-sitter-bash
             tree-sitter-comment
             tree-sitter-css
