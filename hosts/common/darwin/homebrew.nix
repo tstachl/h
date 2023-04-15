@@ -2,6 +2,7 @@
   homebrew = {
     casks = [
       "brave-browser"
+      "keepassxc"
       "ledger-live"
       "mouse-fix"
       "protonvpn"
